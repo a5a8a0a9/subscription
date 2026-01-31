@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+// ==========================================================================
+// Main Stylesheet Entry Point (7-1 Pattern)
+// ==========================================================================
+
+// Vendors - External libraries and frameworks
+// Note: Tailwind CSS v4 must use .css file with @import syntax
+@use "styles/vendors/tailwind.css";
+
+// Abstracts - Variables, mixins, functions (no CSS output)
+// @use "styles/abstracts" as *;
+
+// Base - Reset, typography, base styles
+// @use "styles/base";
+
+// Components - Reusable UI components
+// @use "styles/components";
+
+// Layout - Major layout sections
+// @use "styles/layout";
+
+// Pages - Page-specific styles
+// @use "styles/pages";
+
+// Themes - Theme variations
+// @use "styles/themes";
