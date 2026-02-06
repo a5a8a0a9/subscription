@@ -33,6 +33,9 @@ export const appConfig: ApplicationConfig = {
 					},
 				},
 			},
+			translation: {
+				dateFormat: 'yy/mm/dd',
+			},
 		}),
 	],
 };
