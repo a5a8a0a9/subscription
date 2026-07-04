@@ -3,7 +3,6 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-		"baseUrl": "./",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,
@@ -17,7 +16,7 @@
     "target": "ES2022",
     "module": "preserve",
 		"paths": {
-			"@theme": ["src/app/theme/index"],
+			"@theme": ["./src/app/theme/index"],
 		}
   },
   "angularCompilerOptions": {
