@@ -1,11 +1,9 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ButtonDirective } from 'primeng/button';
-import { DatePicker } from 'primeng/datepicker';
 
 @Component({
 	selector: 'yo-root',
-	imports: [RouterOutlet, ButtonDirective, DatePicker],
+	imports: [RouterOutlet],
 	templateUrl: './app.html',
 	styleUrl: './app.scss',
 })
