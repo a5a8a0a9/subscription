@@ -1,5 +1,3 @@
-@use "../abstracts/variables" as vars;
-
 .page-heading {
 	display: flex;
 	justify-content: space-between;
@@ -7,23 +5,10 @@
 	gap: 24px;
 
 	h1 {
-		margin: 4px 0 8px;
+		margin: 0;
 		font-size: clamp(26px, 3vw, 34px);
 		letter-spacing: -.03em;
 	}
-
-	p:not(.eyebrow) {
-		color: #68778b;
-		margin: 0;
-	}
-}
-
-.eyebrow {
-	color: vars.$color-primary;
-	font-size: 12px;
-	font-weight: 800;
-	letter-spacing: .14em;
-	margin: 0;
 }
 
 @media (max-width: 767px) {
