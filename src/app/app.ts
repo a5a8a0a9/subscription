@@ -1,9 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ReminderService } from './core/reminder.service';
 
 @Component({
 	selector: 'yo-root',
-	imports: [],
+	imports: [RouterOutlet, RouterLink, RouterLinkActive, MatToolbarModule, MatIconModule],
 	templateUrl: './app.html',
 	styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+	constructor() { inject(ReminderService).initialize(); }
+}

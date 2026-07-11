@@ -1,9 +1,5 @@
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
 @use "@angular/material" as mat;
+@use "bootstrap/scss/bootstrap-grid";
 
 html {
 	height: 100%;
@@ -11,7 +7,7 @@ html {
 		(
 			color: (
 				primary: mat.$azure-palette,
-				tertiary: mat.$blue-palette,
+				tertiary: mat.$cyan-palette,
 			),
 			typography: Roboto,
 			density: 0,
@@ -20,42 +16,16 @@ html {
 }
 
 body {
-	// Default the application to a light color theme. This can be changed to
-	// `dark` to enable the dark color theme, or to `light dark` to defer to the
-	// user's system settings.
 	color-scheme: light;
-
-	// Set a default background, font and text colors for the application using
-	// Angular Material's system-level CSS variables. Learn more about these
-	// variables at https://material.angular.dev/guide/system-variables
-	background-color: var(--mat-sys-surface);
-	color: var(--mat-sys-on-surface);
+	background: #f7f9fc;
+	color: #172b4d;
 	font: var(--mat-sys-body-medium);
-
-	// Reset the user agent margin.
 	margin: 0;
 	height: 100%;
 }
-// ==========================================================================
-// Main Stylesheet Entry Point (7-1 Pattern)
-// ==========================================================================
 
-// Vendors - External libraries and frameworks
-
-// Abstracts - Variables, mixins, functions (no CSS output)
-// @use "styles/abstracts" as *;
-
-// Base - Reset, typography, base styles
-// @use "styles/base";
-
-// Components - Reusable UI components
-// @use "styles/components";
-
-// Layout - Major layout sections
-// @use "styles/layout";
-
-// Pages - Page-specific styles
-// @use "styles/pages";
-
-// Themes - Theme variations
-// @use "styles/themes";
+* { box-sizing: border-box; }
+button, input, textarea, select { font: inherit; }
+.mat-mdc-card { border-radius: 16px !important; }
+.mat-mdc-dialog-container .mat-mdc-dialog-surface { border-radius: 18px !important; }
+.mat-mdc-unelevated-button { --mdc-filled-button-container-color: #21639f; }

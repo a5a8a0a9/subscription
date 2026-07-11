@@ -1,0 +1,137 @@
+.page-heading {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 24px;
+	margin-bottom: 24px;
+}
+.page-heading h1 {
+	margin: 4px 0 8px;
+	font-size: clamp(26px, 3vw, 34px);
+}
+.page-heading p:not(.eyebrow) {
+	color: #68778b;
+	margin: 0;
+}
+.eyebrow {
+	color: #2563a7;
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	margin: 0;
+}
+.month-nav {
+	display: flex;
+	align-items: center;
+	background: white;
+	border: 1px solid #e1e7ef;
+	border-radius: 12px;
+	padding: 3px;
+}
+.calendar-card {
+	border: 1px solid #e1e7ef;
+	box-shadow: 0 8px 30px rgba(24, 45, 78, 0.04);
+}
+.calendar-card mat-card-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 22px;
+}
+.month-total {
+	color: #718096;
+}
+.month-total strong {
+	color: #172b4d;
+	font-size: 18px;
+	margin-left: 5px;
+}
+.calendar-card mat-card-content {
+	padding: 0 14px 16px;
+}
+.weekday-grid,
+.calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.weekday-grid div {
+	text-align: center;
+	color: #718096;
+	font-size: 12px;
+	font-weight: 700;
+	padding: 10px;
+}
+.calendar-grid {
+	border-top: 1px solid #e7ebf1;
+	border-left: 1px solid #e7ebf1;
+}
+.calendar-day {
+	min-height: 120px;
+	padding: 8px;
+	border-right: 1px solid #e7ebf1;
+	border-bottom: 1px solid #e7ebf1;
+	background: #fff;
+	overflow: hidden;
+}
+.calendar-day.outside {
+	background: #f8fafc;
+	color: #aab3c0;
+}
+.day-number {
+	width: 26px;
+	height: 26px;
+	display: grid;
+	place-items: center;
+	font-size: 12px;
+	font-weight: 700;
+	border-radius: 50%;
+	margin-bottom: 4px;
+}
+.calendar-day.today .day-number {
+	background: #2367a8;
+	color: white;
+}
+.event-list {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.billing-event {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	gap: 5px;
+	border: 0;
+	border-radius: 6px;
+	background: #e8f2ff;
+	color: #225d96;
+	padding: 5px 6px;
+	font: inherit;
+	font-size: 11px;
+	cursor: pointer;
+	text-align: left;
+}
+.billing-event span {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.billing-event strong {
+	font-size: 10px;
+}
+@media (max-width: 720px) {
+	.page-heading {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+	.calendar-card {
+		overflow-x: auto;
+	}
+	.calendar-card mat-card-header,
+	.calendar-card mat-card-content {
+		min-width: 720px;
+	}
+	.calendar-day {
+		min-height: 95px;
+	}
+}
