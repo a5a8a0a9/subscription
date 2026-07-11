@@ -103,15 +103,79 @@
 .billing-event strong {
 	font-size: 10px;
 }
+
+.calendar-list {
+	display: none;
+}
+
 @media (max-width: 720px) {
-	.calendar-card {
-		overflow-x: auto;
+	.calendar-desktop {
+		display: none;
 	}
-	.calendar-card mat-card-header,
+
+	.calendar-list {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.calendar-card mat-card-header {
+		align-items: flex-start;
+		gap: 8px;
+		padding: 18px;
+	}
+
 	.calendar-card mat-card-content {
-		min-width: 720px;
+		padding: 0 12px 12px;
 	}
-	.calendar-day {
-		min-height: 95px;
+
+	.list-event {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		width: 100%;
+		padding: 12px;
+		border: 1px solid #e7ebf1;
+		border-radius: 12px;
+		background: #fff;
+		color: #172b4d;
+		text-align: left;
+		cursor: pointer;
+	}
+
+	.list-date {
+		display: grid;
+		place-items: center;
+		width: 44px;
+		height: 48px;
+		border-radius: 10px;
+		background: #e8f2ff;
+		color: #225d96;
+		flex: none;
+	}
+
+	.list-date strong,
+	.list-date small,
+	.list-content strong,
+	.list-content small {
+		display: block;
+	}
+
+	.list-date small,
+	.list-content small {
+		font-size: 11px;
+		color: #718096;
+	}
+
+	.list-content {
+		flex: 1;
+	}
+
+	.list-amount {
+		white-space: nowrap;
+	}
+
+	.calendar-empty {
+		min-height: 220px;
 	}
 }
