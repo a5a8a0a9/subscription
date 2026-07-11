@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
@@ -38,17 +38,16 @@ export interface ActivityFormData {
 	styleUrl: './activity-form-dialog.component.scss',
 })
 export class ActivityFormDialogComponent {
+	readonly data = inject<ActivityFormData>(MAT_DIALOG_DATA);
+	private readonly dialogRef = inject<MatDialogRef<ActivityFormDialogComponent, ActivityDraft>>(MatDialogRef);
 	readonly categories = ACTIVITY_CATEGORIES;
 	readonly statuses: ActivityStatus[] = ['active', 'paused', 'cancelled'];
 	readonly statusLabels = ACTIVITY_STATUS_LABELS;
 	readonly reminderOptions = [1, 3, 7, 14, 30];
 	readonly form: FormGroup;
 
-	constructor(
-		@Inject(MAT_DIALOG_DATA) readonly data: ActivityFormData,
-		private readonly dialogRef: MatDialogRef<ActivityFormDialogComponent, ActivityDraft>,
-	) {
-		const item = data.item;
+	constructor() {
+		const item = this.data.item;
 		const custom = item?.billingCycle.kind === 'custom' ? item.billingCycle : undefined;
 		this.form = new FormGroup({
 			name: new FormControl(item?.name ?? '', { nonNullable: true, validators: [Validators.required, Validators.maxLength(80)] }),
@@ -85,4 +84,3 @@ export class ActivityFormDialogComponent {
 		});
 	}
 }
-

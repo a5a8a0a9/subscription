@@ -31,6 +31,7 @@ type SortOption = 'date' | 'name' | 'amountHigh' | 'amountLow';
 export class ActivityListComponent {
 	private readonly store = inject(ActivityStore);
 	private readonly dialog = inject(MatDialog);
+	private readonly route = inject(ActivatedRoute);
 	readonly search = signal('');
 	readonly status = signal<ActivityStatus | 'all'>('all');
 	readonly category = signal('all');
@@ -56,8 +57,8 @@ export class ActivityListComponent {
 		});
 	});
 
-	constructor(route: ActivatedRoute) {
-		route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((params) => {
+	constructor() {
+		this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((params) => {
 			if (params.has('create')) queueMicrotask(() => this.openForm());
 		});
 	}

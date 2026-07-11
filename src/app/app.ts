@@ -11,5 +11,9 @@ import { ReminderService } from './features/activity-management/data-access/remi
 	styleUrl: './app.scss',
 })
 export class App {
-	constructor() { inject(ReminderService).initialize(); }
+	private readonly reminderService = inject(ReminderService);
+
+	constructor() {
+		this.reminderService.initialize();
+	}
 }
