@@ -1,31 +1,7 @@
-@use "@angular/material" as mat;
-@use "bootstrap/scss/bootstrap-grid";
+@use "styles/vendors/bootstrap";
+@use "styles/themes/material";
+@use "styles/base/reset";
+@use "styles/components/page-heading";
+@use "styles/components/empty-state";
+@use "styles/components/material-overrides";
 
-html {
-	height: 100%;
-	@include mat.theme(
-		(
-			color: (
-				primary: mat.$azure-palette,
-				tertiary: mat.$cyan-palette,
-			),
-			typography: Roboto,
-			density: 0,
-		)
-	);
-}
-
-body {
-	color-scheme: light;
-	background: #f7f9fc;
-	color: #172b4d;
-	font: var(--mat-sys-body-medium);
-	margin: 0;
-	height: 100%;
-}
-
-* { box-sizing: border-box; }
-button, input, textarea, select { font: inherit; }
-.mat-mdc-card { border-radius: 16px !important; }
-.mat-mdc-dialog-container .mat-mdc-dialog-surface { border-radius: 18px !important; }
-.mat-mdc-unelevated-button { --mdc-filled-button-container-color: #21639f; }

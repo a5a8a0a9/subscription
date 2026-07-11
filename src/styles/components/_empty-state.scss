@@ -1,0 +1,24 @@
+@use "../abstracts/variables" as vars;
+
+.empty-state {
+	display: grid;
+	place-content: center;
+	justify-items: center;
+	text-align: center;
+	color: vars.$color-muted;
+
+	mat-icon {
+		width: 48px;
+		height: 48px;
+		font-size: 48px;
+	}
+
+	h2 {
+		margin: 12px 0 0;
+	}
+
+	p {
+		margin: 6px 0;
+	}
+}
+
