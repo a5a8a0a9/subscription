@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { ReminderService } from './core/reminder.service';
+import { ReminderService } from './features/activity-management/data-access/reminder.service';
 
 @Component({
 	selector: 'yo-root',

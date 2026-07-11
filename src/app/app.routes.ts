@@ -4,17 +4,17 @@ export const routes: Routes = [
 	{ path: '', pathMatch: 'full', redirectTo: 'dashboard' },
 	{
 		path: 'dashboard',
-		loadComponent: () => import('./dashboard/dashboard.component').then((module) => module.DashboardComponent),
+		loadComponent: () => import('./features/activity-management/pages/dashboard/dashboard.component').then((module) => module.DashboardComponent),
 		title: '總覽 | SubTrack',
 	},
 	{
 		path: 'activities',
-		loadComponent: () => import('./activities/activity-list.component').then((module) => module.ActivityListComponent),
+		loadComponent: () => import('./features/activity-management/pages/activities/activity-list.component').then((module) => module.ActivityListComponent),
 		title: '我的訂閱 | SubTrack',
 	},
 	{
 		path: 'calendar',
-		loadComponent: () => import('./calendar/calendar.component').then((module) => module.CalendarComponent),
+		loadComponent: () => import('./features/activity-management/pages/calendar/calendar.component').then((module) => module.CalendarComponent),
 		title: '訂閱月曆 | SubTrack',
 	},
 	{ path: '**', redirectTo: 'dashboard' },

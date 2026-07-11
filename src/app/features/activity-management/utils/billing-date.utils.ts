@@ -1,4 +1,4 @@
-import { Activity, BillingCycle, BillingEvent } from './activity.model';
+import { Activity, BillingCycle, BillingEvent } from '../models/activity.model';
 
 const DAY_MS = 86_400_000;
 
@@ -117,4 +117,3 @@ function occurrenceAt(anchor: Date, cycle: BillingCycle, index: number): Date {
 export function daysBetween(start: Date, end: Date): number {
 	return Math.round((end.getTime() - start.getTime()) / DAY_MS);
 }
-

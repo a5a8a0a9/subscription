@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { ActivityDraft } from './activity.model';
+import { ActivityDraft } from '../models/activity.model';
 import { ActivityStore } from './activity.store';
 
 const draft: ActivityDraft = {
@@ -38,4 +38,3 @@ describe('ActivityStore', () => {
 		expect(store.monthlySpend()).toBe(withActive - draft.amount);
 	});
 });
-

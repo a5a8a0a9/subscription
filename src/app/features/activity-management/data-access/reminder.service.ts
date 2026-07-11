@@ -5,7 +5,7 @@ import {
 	billingEventsBetween,
 	formatLocalDate,
 	startOfToday,
-} from './billing-date.utils';
+} from '../utils/billing-date.utils';
 
 @Injectable({ providedIn: 'root' })
 export class ReminderService {

@@ -16,8 +16,8 @@ import {
 	ActivityStatus,
 	BillingCycle,
 	BillingUnit,
-} from '../core/activity.model';
-import { cycleLabel } from '../core/billing-date.utils';
+} from '../../models/activity.model';
+import { cycleLabel } from '../../utils/billing-date.utils';
 
 export interface ActivityFormData {
 	item?: Activity;

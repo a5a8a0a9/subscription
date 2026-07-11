@@ -5,8 +5,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
-import { ActivityStore } from '../core/activity.store';
-import { ReminderService } from '../core/reminder.service';
+import { ActivityStore } from '../../data-access/activity.store';
+import { ReminderService } from '../../data-access/reminder.service';
 
 @Component({
 	selector: 'yo-dashboard',

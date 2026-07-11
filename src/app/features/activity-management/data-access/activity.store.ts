@@ -1,7 +1,7 @@
 import { Injectable, computed, inject, signal } from '@angular/core';
-import { Activity, ActivityDraft, BillingEvent } from './activity.model';
+import { Activity, ActivityDraft, BillingEvent } from '../models/activity.model';
 import { ActivityRepository } from './activity.repository';
-import { addDays, billingEventsBetween, monthlyEquivalent, startOfToday } from './billing-date.utils';
+import { addDays, billingEventsBetween, monthlyEquivalent, startOfToday } from '../utils/billing-date.utils';
 
 @Injectable({ providedIn: 'root' })
 export class ActivityStore {

@@ -1,4 +1,4 @@
-import { Activity } from './activity.model';
+import { Activity } from '../models/activity.model';
 import { billingEventsBetween, monthlyEquivalent, parseLocalDate } from './billing-date.utils';
 
 function item(overrides: Partial<Activity> = {}): Activity {
@@ -36,4 +36,3 @@ describe('billing date utilities', () => {
 		expect(monthlyEquivalent(item({ amount: 300, billingCycle: { kind: 'monthly' } }))).toBe(300);
 	});
 });
-

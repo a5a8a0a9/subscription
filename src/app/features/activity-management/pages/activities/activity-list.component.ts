@@ -10,9 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ACTIVITY_CATEGORIES, ACTIVITY_STATUS_LABELS, Activity, ActivityStatus } from '../core/activity.model';
-import { ActivityStore } from '../core/activity.store';
-import { cycleLabel } from '../core/billing-date.utils';
+import { ACTIVITY_CATEGORIES, ACTIVITY_STATUS_LABELS, Activity, ActivityStatus } from '../../models/activity.model';
+import { ActivityStore } from '../../data-access/activity.store';
+import { cycleLabel } from '../../utils/billing-date.utils';
 import { ActivityDetailDialog, ActivityFormDialog, ConfirmDialog } from './activity-dialogs';
 
 type SortOption = 'date' | 'name' | 'amountHigh' | 'amountLow';
@@ -131,4 +131,3 @@ export class ActivityListComponent {
 			.afterClosed().subscribe((confirmed) => { if (confirmed) this.store.delete(item.id); });
 	}
 }
-

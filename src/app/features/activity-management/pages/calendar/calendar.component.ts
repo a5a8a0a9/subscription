@@ -8,9 +8,9 @@ import {
 	ActivityDetailDialog,
 	ActivityFormDialog,
 } from '../activities/activity-dialogs';
-import { Activity } from '../core/activity.model';
-import { ActivityStore } from '../core/activity.store';
-import { formatLocalDate } from '../core/billing-date.utils';
+import { Activity } from '../../models/activity.model';
+import { ActivityStore } from '../../data-access/activity.store';
+import { formatLocalDate } from '../../utils/billing-date.utils';
 
 interface CalendarDay {
 	date: Date;

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Activity } from './activity.model';
-import { addDays, formatLocalDate, startOfToday } from './billing-date.utils';
+import { Activity } from '../models/activity.model';
+import { addDays, formatLocalDate, startOfToday } from '../utils/billing-date.utils';
 
 interface StoredActivities {
 	version: 1;
@@ -65,4 +65,3 @@ function isActivity(value: unknown): value is Activity {
 		/^\d{4}-\d{2}-\d{2}$/.test(item.nextBillingDate ?? ''),
 	);
 }
-
