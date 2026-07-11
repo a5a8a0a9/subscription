@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>{{ data.item ? '編輯訂閱' : '新增訂閱' }}</h2>
+<form [formGroup]="form" (ngSubmit)="save()">
+	<mat-dialog-content class="form-content">
+		<div class="row g-3">
+			<mat-form-field appearance="outline" class="col-12 col-md-7">
+				<mat-label>名稱</mat-label><input matInput formControlName="name" maxlength="80" />
+				@if (form.controls['name'].invalid) { <mat-error>請輸入名稱</mat-error> }
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="col-12 col-md-5">
+				<mat-label>金額 (TWD)</mat-label><input matInput type="number" min="1" step="1" formControlName="amount" />
+				@if (form.controls['amount'].invalid) { <mat-error>金額必須大於 0</mat-error> }
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="col-12 col-md-6">
+				<mat-label>分類</mat-label><input matInput formControlName="category" [attr.list]="'activity-categories'" maxlength="30" />
+				<datalist id="activity-categories">@for (category of categories; track category) { <option [value]="category"></option> }</datalist>
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="col-12 col-md-6">
+				<mat-label>狀態</mat-label><mat-select formControlName="status">
+					@for (status of statuses; track status) { <mat-option [value]="status">{{ statusLabels[status] }}</mat-option> }
+				</mat-select>
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="col-12 col-md-6">
+				<mat-label>下次扣款日</mat-label><input matInput type="date" formControlName="nextBillingDate" />
+			</mat-form-field>
+			<mat-form-field appearance="outline" class="col-12 col-md-6">
+				<mat-label>計費週期</mat-label><mat-select formControlName="cycleKind">
+					<mat-option value="monthly">每月</mat-option><mat-option value="quarterly">每季</mat-option>
+					<mat-option value="yearly">每年</mat-option><mat-option value="custom">自訂週期</mat-option>
+				</mat-select>
+			</mat-form-field>
+			@if (form.controls['cycleKind'].value === 'custom') {
+				<mat-form-field appearance="outline" class="col-6"><mat-label>間隔</mat-label><input matInput type="number" min="1" formControlName="interval" /></mat-form-field>
+				<mat-form-field appearance="outline" class="col-6"><mat-label>單位</mat-label><mat-select formControlName="unit"><mat-option value="day">天</mat-option><mat-option value="month">月</mat-option><mat-option value="year">年</mat-option></mat-select></mat-form-field>
+			}
+			<div class="col-12 reminder-row">
+				<mat-slide-toggle formControlName="reminderEnabled">啟用扣款提醒</mat-slide-toggle>
+				@if (form.controls['reminderEnabled'].value) {
+					<mat-form-field appearance="outline" subscriptSizing="dynamic"><mat-label>提前天數</mat-label><mat-select formControlName="reminderDays">@for (day of reminderOptions; track day) { <mat-option [value]="day">{{ day }} 天</mat-option> }</mat-select></mat-form-field>
+				}
+			</div>
+			<mat-form-field appearance="outline" class="col-12"><mat-label>網站連結（選填）</mat-label><input matInput type="url" formControlName="website" /></mat-form-field>
+			<mat-form-field appearance="outline" class="col-12"><mat-label>備註（選填）</mat-label><textarea matInput rows="3" maxlength="500" formControlName="notes"></textarea></mat-form-field>
+		</div>
+	</mat-dialog-content>
+	<mat-dialog-actions align="end"><button mat-button type="button" mat-dialog-close>取消</button><button mat-flat-button type="submit" [disabled]="form.invalid">儲存</button></mat-dialog-actions>
+</form>
+

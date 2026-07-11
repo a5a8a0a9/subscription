@@ -1,0 +1,17 @@
+.form-content {
+	width: min(720px, 78vw);
+	padding-top: 8px !important;
+}
+
+.reminder-row {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	min-height: 64px;
+}
+
+@media (max-width: 599px) {
+	.form-content { width: auto; }
+	.reminder-row { align-items: flex-start; flex-direction: column; gap: 12px; }
+}
+

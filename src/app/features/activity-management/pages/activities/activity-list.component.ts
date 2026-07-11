@@ -13,7 +13,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ACTIVITY_CATEGORIES, ACTIVITY_STATUS_LABELS, Activity, ActivityStatus } from '../../models/activity.model';
 import { ActivityStore } from '../../data-access/activity.store';
 import { cycleLabel } from '../../utils/billing-date.utils';
-import { ActivityDetailDialog, ActivityFormDialog, ConfirmDialog } from './activity-dialogs';
+import {
+	ActivityDetailDialogComponent,
+	ActivityFormDialogComponent,
+	ConfirmDialogComponent,
+} from './activity-dialogs';
 
 type SortOption = 'date' | 'name' | 'amountHigh' | 'amountLow';
 
@@ -21,61 +25,7 @@ type SortOption = 'date' | 'name' | 'amountHigh' | 'amountLow';
 	selector: 'yo-activity-list',
 	standalone: true,
 	imports: [CommonModule, MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule],
-	template: `
-		<section class="page-heading">
-			<div><p class="eyebrow">訂閱管理</p><h1>我的訂閱</h1><p>查看並管理所有定期支出。</p></div>
-			<button mat-flat-button (click)="openForm()"><mat-icon>add</mat-icon>新增訂閱</button>
-		</section>
-
-		<mat-card class="filter-card">
-			<mat-card-content>
-				<mat-form-field appearance="outline" subscriptSizing="dynamic" class="search-field">
-					<mat-label>搜尋名稱或分類</mat-label><mat-icon matPrefix>search</mat-icon>
-					<input matInput [value]="search()" (input)="search.set($any($event.target).value)" />
-				</mat-form-field>
-				<mat-form-field appearance="outline" subscriptSizing="dynamic">
-					<mat-label>狀態</mat-label><mat-select [value]="status()" (selectionChange)="status.set($event.value)">
-						<mat-option value="all">全部狀態</mat-option>
-						@for (item of statuses; track item) { <mat-option [value]="item">{{ statusLabels[item] }}</mat-option> }
-					</mat-select>
-				</mat-form-field>
-				<mat-form-field appearance="outline" subscriptSizing="dynamic">
-					<mat-label>分類</mat-label><mat-select [value]="category()" (selectionChange)="category.set($event.value)">
-						<mat-option value="all">全部分類</mat-option>
-						@for (item of categories(); track item) { <mat-option [value]="item">{{ item }}</mat-option> }
-					</mat-select>
-				</mat-form-field>
-				<mat-form-field appearance="outline" subscriptSizing="dynamic">
-					<mat-label>排序</mat-label><mat-select [value]="sort()" (selectionChange)="sort.set($event.value)">
-						<mat-option value="date">扣款日</mat-option><mat-option value="name">名稱</mat-option>
-						<mat-option value="amountHigh">金額：高至低</mat-option><mat-option value="amountLow">金額：低至高</mat-option>
-					</mat-select>
-				</mat-form-field>
-			</mat-card-content>
-		</mat-card>
-
-		<div class="result-meta">共 {{ filteredItems().length }} 項結果</div>
-		@if (filteredItems().length) {
-			<div class="activity-grid">
-				@for (item of filteredItems(); track item.id) {
-					<mat-card class="activity-card" (click)="openDetail(item)">
-						<mat-card-content>
-							<div class="card-top"><div class="service-icon">{{ item.name.charAt(0).toUpperCase() }}</div><span class="status-pill" [class]="'status-pill ' + item.status">{{ statusLabels[item.status] }}</span></div>
-							<h2>{{ item.name }}</h2><span class="category">{{ item.category }}</span>
-							<div class="amount">{{ item.amount | currency:'TWD':'symbol-narrow':'1.0-0':'zh-TW' }} <small>/ {{ cycleLabel(item.billingCycle) }}</small></div>
-							<div class="billing-date"><mat-icon>event</mat-icon><span>下次扣款 {{ item.nextBillingDate }}</span></div>
-							<div class="card-actions">
-								<button mat-button (click)="openForm(item); $event.stopPropagation()"><mat-icon>edit</mat-icon>編輯</button>
-								<button mat-icon-button aria-label="刪除" (click)="confirmDelete(item); $event.stopPropagation()"><mat-icon>delete_outline</mat-icon></button>
-							</div>
-						</mat-card-content>
-					</mat-card>
-				}
-			</div>
-		} @else {
-			<div class="empty-state"><mat-icon>search_off</mat-icon><h2>找不到符合的訂閱</h2><p>請調整搜尋或篩選條件。</p></div>
-		}
-	`,
+	templateUrl: './activity-list.component.html',
 	styleUrl: './activity-list.component.scss',
 })
 export class ActivityListComponent {
@@ -113,7 +63,7 @@ export class ActivityListComponent {
 	}
 
 	openForm(item?: Activity): void {
-		this.dialog.open(ActivityFormDialog, { data: { item }, maxWidth: '95vw', autoFocus: 'first-tabbable' })
+		this.dialog.open(ActivityFormDialogComponent, { data: { item }, maxWidth: '95vw', autoFocus: 'first-tabbable' })
 			.afterClosed().subscribe((draft) => {
 				if (!draft) return;
 				item ? this.store.update(item.id, draft) : this.store.create(draft);
@@ -121,13 +71,13 @@ export class ActivityListComponent {
 	}
 
 	openDetail(item: Activity): void {
-		this.dialog.open(ActivityDetailDialog, { data: item, maxWidth: '92vw' }).afterClosed().subscribe((action) => {
+		this.dialog.open(ActivityDetailDialogComponent, { data: item, maxWidth: '92vw' }).afterClosed().subscribe((action) => {
 			if (action === 'edit') this.openForm(item);
 		});
 	}
 
 	confirmDelete(item: Activity): void {
-		this.dialog.open(ConfirmDialog, { data: { title: '刪除訂閱？', message: `「${item.name}」將被永久刪除，此動作無法復原。`, confirmText: '永久刪除' } })
+		this.dialog.open(ConfirmDialogComponent, { data: { title: '刪除訂閱？', message: `「${item.name}」將被永久刪除，此動作無法復原。`, confirmText: '永久刪除' } })
 			.afterClosed().subscribe((confirmed) => { if (confirmed) this.store.delete(item.id); });
 	}
 }
