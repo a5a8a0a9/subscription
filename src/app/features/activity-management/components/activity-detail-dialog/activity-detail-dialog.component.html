@@ -6,6 +6,7 @@
 	<div class="grid detail-grid">
 		<div class="g-col-12 g-col-sm-6"><span>金額</span><strong>{{ item.amount | currency: 'TWD' : 'symbol-narrow' : '1.0-0' : 'zh-TW' }}</strong></div>
 		<div class="g-col-12 g-col-sm-6"><span>狀態</span><strong>{{ statusLabels[item.status] }}</strong></div>
+		<div class="g-col-12 g-col-sm-6"><span>開始日期</span><strong>{{ item.startDate }}</strong></div>
 		<div class="g-col-12 g-col-sm-6"><span>下次扣款</span><strong>{{ item.nextBillingDate }}</strong></div>
 		<div class="g-col-12 g-col-sm-6"><span>週期</span><strong>{{ cycleLabel(item.billingCycle) }}</strong></div>
 		<div class="g-col-12 g-col-sm-6"><span>提醒</span><strong>{{ item.reminderDays === null ? '已關閉' : '提前 ' + item.reminderDays + ' 天' }}</strong></div>

@@ -4,7 +4,7 @@ import { billingEventsBetween, monthlyEquivalent, parseLocalDate } from './billi
 function item(overrides: Partial<Activity> = {}): Activity {
 	return {
 		id: 'a1', name: 'Test', amount: 300, category: '軟體', status: 'active',
-		nextBillingDate: '2026-01-31', billingCycle: { kind: 'monthly' }, reminderDays: 3,
+		startDate: '2026-01-01', nextBillingDate: '2026-01-31', billingCycle: { kind: 'monthly' }, reminderDays: 3,
 		website: '', notes: '', createdAt: '2026-01-01T00:00:00.000Z', updatedAt: '2026-01-01T00:00:00.000Z',
 		...overrides,
 	};

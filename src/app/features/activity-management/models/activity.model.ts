@@ -14,6 +14,7 @@ export interface Activity {
 	amount: number;
 	category: string;
 	status: ActivityStatus;
+	startDate: string;
 	nextBillingDate: string;
 	billingCycle: BillingCycle;
 	reminderDays: number | null;
@@ -28,6 +29,7 @@ export interface ActivityDraft {
 	amount: number;
 	category: string;
 	status: ActivityStatus;
+	startDate: string;
 	nextBillingDate: string;
 	billingCycle: BillingCycle;
 	reminderDays: number | null;
@@ -64,4 +66,3 @@ export const ACTIVITY_STATUS_LABELS: Record<ActivityStatus, string> = {
 	paused: '暫停',
 	cancelled: '已取消',
 };
-

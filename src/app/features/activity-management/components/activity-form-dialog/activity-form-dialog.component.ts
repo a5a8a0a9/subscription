@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -54,6 +54,7 @@ export class ActivityFormDialogComponent {
 			amount: new FormControl(item?.amount ?? 0, { nonNullable: true, validators: [Validators.required, Validators.min(1)] }),
 			category: new FormControl(item?.category ?? '其他', { nonNullable: true, validators: [Validators.required] }),
 			status: new FormControl<ActivityStatus>(item?.status ?? 'active', { nonNullable: true }),
+			startDate: new FormControl(item?.startDate ?? '', { nonNullable: true, validators: [Validators.required] }),
 			nextBillingDate: new FormControl(item?.nextBillingDate ?? '', { nonNullable: true, validators: [Validators.required] }),
 			cycleKind: new FormControl<BillingCycle['kind']>(item?.billingCycle.kind ?? 'monthly', { nonNullable: true }),
 			interval: new FormControl(custom?.interval ?? 1, { nonNullable: true, validators: [Validators.required, Validators.min(1)] }),
@@ -62,7 +63,7 @@ export class ActivityFormDialogComponent {
 			reminderDays: new FormControl(item?.reminderDays ?? 3, { nonNullable: true }),
 			website: new FormControl(item?.website ?? '', { nonNullable: true }),
 			notes: new FormControl(item?.notes ?? '', { nonNullable: true, validators: [Validators.maxLength(500)] }),
-		});
+		}, { validators: billingDateOrderValidator });
 	}
 
 	save(): void {
@@ -76,6 +77,7 @@ export class ActivityFormDialogComponent {
 			amount: Math.round(value.amount),
 			category: value.category.trim(),
 			status: value.status,
+			startDate: value.startDate,
 			nextBillingDate: value.nextBillingDate,
 			billingCycle,
 			reminderDays: value.reminderEnabled ? value.reminderDays : null,
@@ -83,4 +85,10 @@ export class ActivityFormDialogComponent {
 			notes: value.notes.trim(),
 		});
 	}
+}
+
+function billingDateOrderValidator(control: AbstractControl): ValidationErrors | null {
+	const startDate = control.get('startDate')?.value as string | undefined;
+	const nextBillingDate = control.get('nextBillingDate')?.value as string | undefined;
+	return startDate && nextBillingDate && startDate > nextBillingDate ? { billingDateOrder: true } : null;
 }
