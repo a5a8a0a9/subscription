@@ -1,3 +1,9 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
 .month-nav {
 	display: flex;
 	align-items: center;

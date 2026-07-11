@@ -14,9 +14,9 @@
 	</div>
 </section>
 
-<div class="row g-3 summary-grid">
+<div class="grid summary-grid">
 	@for (card of summaryCards(); track card.label) {
-		<div class="col-12 col-sm-6 col-xl-3">
+		<div class="g-col-12 g-col-sm-6 g-col-xl-3">
 			<mat-card class="summary-card">
 				<mat-card-content>
 					<div [class]="'summary-icon ' + card.tone"><mat-icon>{{ card.icon }}</mat-icon></div>
@@ -27,8 +27,8 @@
 	}
 </div>
 
-<div class="row g-4 dashboard-body">
-	<div class="col-12 col-lg-8">
+<div class="grid dashboard-body">
+	<div class="g-col-12 g-col-lg-8">
 		<mat-card class="panel-card">
 			<mat-card-header>
 				<div><mat-card-title>即將扣款</mat-card-title><mat-card-subtitle>未來 30 天的支出行程</mat-card-subtitle></div>
@@ -51,7 +51,7 @@
 			</mat-card-content>
 		</mat-card>
 	</div>
-	<div class="col-12 col-lg-4">
+	<div class="g-col-12 g-col-lg-4">
 		<mat-card class="panel-card reminder-card">
 			<mat-card-header><mat-card-title>近期提醒</mat-card-title><mat-card-subtitle>根據每筆項目的提醒設定</mat-card-subtitle></mat-card-header>
 			<mat-card-content>

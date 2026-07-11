@@ -1,10 +1,16 @@
+:host {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
 .heading-actions {
 	display: flex;
 	gap: 10px;
 	flex-wrap: wrap;
 }
 .summary-grid {
-	margin-bottom: 24px;
+	--bs-gap: 16px;
 }
 .summary-card {
 	height: 100%;
@@ -55,6 +61,7 @@
 	color: #16835b;
 }
 .dashboard-body {
+	--bs-gap: 24px;
 	align-items: stretch;
 }
 .dashboard-body > div {

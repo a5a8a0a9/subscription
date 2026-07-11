@@ -3,6 +3,10 @@
 	padding-top: 8px !important;
 }
 
+.form-grid {
+	--bs-gap: 16px;
+}
+
 .reminder-row {
 	display: flex;
 	align-items: center;
@@ -14,4 +18,3 @@
 	.form-content { width: auto; }
 	.reminder-row { align-items: flex-start; flex-direction: column; gap: 12px; }
 }
-
