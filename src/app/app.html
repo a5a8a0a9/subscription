@@ -1,16 +1,5 @@
 <div class="app-shell">
-	<mat-toolbar class="topbar">
-		<a class="brand" routerLink="/dashboard" aria-label="SubTrack 首頁">
-			<span class="brand-mark"><mat-icon>donut_small</mat-icon></span>
-			<span>SubTrack</span>
-		</a>
-		<nav aria-label="主選單">
-			<a routerLink="/dashboard" routerLinkActive="active"><mat-icon>space_dashboard</mat-icon><span>總覽</span></a>
-			<a routerLink="/activities" routerLinkActive="active"><mat-icon>receipt_long</mat-icon><span>訂閱</span></a>
-			<a routerLink="/calendar" routerLinkActive="active"><mat-icon>calendar_month</mat-icon><span>月曆</span></a>
-		</nav>
-		<div class="local-badge"><mat-icon>cloud_off</mat-icon><span>本機儲存</span></div>
-	</mat-toolbar>
+	<yo-header />
 	<main><router-outlet /></main>
-	<footer>資料僅儲存在這台裝置 · SubTrack</footer>
+	<yo-footer />
 </div>

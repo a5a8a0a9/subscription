@@ -1,12 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { ReminderService } from './features/activity-management/data-access/reminder.service';
+import { FooterComponent } from './layout/footer/footer.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 @Component({
 	selector: 'yo-root',
-	imports: [RouterOutlet, RouterLink, RouterLinkActive, MatToolbarModule, MatIconModule],
+	imports: [RouterOutlet, HeaderComponent, FooterComponent],
 	templateUrl: './app.html',
 	styleUrl: './app.scss',
 })

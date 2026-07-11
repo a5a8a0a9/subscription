@@ -1,0 +1,12 @@
+.topbar { position:sticky; top:0; z-index:20; height:68px; padding:0 max(18px, calc((100vw - 1280px)/2)); background:rgba(255,255,255,.92); border-bottom:1px solid #e5eaf1; backdrop-filter:blur(14px); }
+.brand { display:flex; align-items:center; gap:10px; color:#172b4d; font-weight:800; text-decoration:none; font-size:19px; }
+.brand-mark { width:36px; height:36px; display:grid; place-items:center; border-radius:11px; color:white; background:linear-gradient(135deg,#2367a8,#163f70); }
+nav { display:flex; gap:5px; margin-left:48px; }
+nav a { height:42px; padding:0 14px; border-radius:10px; display:flex; align-items:center; gap:7px; color:#68778b; font-size:14px; font-weight:650; text-decoration:none; }
+nav a mat-icon { font-size:20px; width:20px; height:20px; }
+nav a:hover, nav a.active { color:#1f5e99; background:#eaf3fc; }
+.local-badge { margin-left:auto; display:flex; align-items:center; gap:6px; color:#718096; font-size:12px; }
+.local-badge mat-icon { font-size:17px; width:17px; height:17px; }
+@media(max-width:700px){.topbar{height:62px;padding:0 12px}.brand>span:last-child,.local-badge{display:none}nav{margin-left:auto;gap:2px}nav a{padding:0 10px}}
+@media(max-width:430px){nav a span{display:none}nav a{padding:0 12px}}
+
