@@ -32,10 +32,10 @@ jobs:
         run: npm ci
 
       - name: Configure GitHub Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Build
-        run: npm run build -- --base-href /subscription/
+        run: npm run build -- --base-href /
 
       - name: Add SPA fallback
         run: cp dist/sub-track/browser/index.html dist/sub-track/browser/404.html
