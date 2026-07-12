@@ -74,9 +74,8 @@
 	</mat-card>
 
 	<div class="result-meta">共 {{ filteredItems().length }} 項結果</div>
-	@if (filteredItems().length) {
-		<div class="grid gap-3 activity-grid">
-			@for (item of filteredItems(); track item.id) {
+	<div class="grid gap-3 activity-grid">
+		@for (item of filteredItems(); track item.id) {
 				<mat-card
 					class="activity-card g-col-12 g-col-md-6 g-col-xl-4"
 					(click)="openDetail(item)"
@@ -120,13 +119,12 @@
 						</div>
 					</mat-card-content>
 				</mat-card>
-			}
-		</div>
-	} @else {
-		<div class="empty-state">
+		} @empty {
+		<div class="empty-state g-col-12">
 			<mat-icon>search_off</mat-icon>
 			<h2>找不到符合的訂閱</h2>
 			<p>請調整搜尋或篩選條件。</p>
 		</div>
-	}
+		}
+	</div>
 </yo-page-container>

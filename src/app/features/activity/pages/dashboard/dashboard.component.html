@@ -38,9 +38,8 @@
 					<a mat-button routerLink="/calendar">查看月曆</a>
 				</mat-card-header>
 				<mat-card-content>
-					@if (store.upcomingCharges().length) {
-						<div class="charge-list">
-							@for (
+					<div class="charge-list">
+						@for (
 								event of store.upcomingCharges().slice(0, 6);
 								track event.activityId + event.date
 							) {
@@ -58,14 +57,13 @@
 											| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
 									}}</strong>
 								</div>
-							}
-						</div>
-					} @else {
-						<div class="empty-state">
-							<mat-icon>event_available</mat-icon>
-							<p>未來 30 天沒有預計扣款</p>
-						</div>
-					}
+						} @empty {
+							<div class="empty-state">
+								<mat-icon>event_available</mat-icon>
+								<p>未來 30 天沒有預計扣款</p>
+							</div>
+						}
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</div>
@@ -78,8 +76,7 @@
 					></mat-card-header
 				>
 				<mat-card-content>
-					@if (dueSoon().length) {
-						@for (event of dueSoon(); track event.activityId + event.date) {
+					@for (event of dueSoon(); track event.activityId + event.date) {
 							<div class="reminder-item">
 								<mat-icon>schedule</mat-icon>
 								<div>
@@ -87,8 +84,7 @@
 									><span>{{ event.date }} 扣款</span>
 								</div>
 							</div>
-						}
-					} @else {
+					} @empty {
 						<div class="empty-state compact">
 							<mat-icon>notifications_none</mat-icon>
 							<p>目前沒有近期提醒</p>

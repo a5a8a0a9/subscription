@@ -59,8 +59,7 @@
 			</div>
 
 			<div class="calendar-list">
-				@if (monthEvents().length) {
-					@for (event of monthEvents(); track event.activityId + event.date) {
+				@for (event of monthEvents(); track event.activityId + event.date) {
 						<button class="list-event" (click)="openEvent(event.activityId)">
 							<span class="list-date"
 								><strong>{{ event.date | date: "dd" : "" : "zh-TW" }}</strong
@@ -77,8 +76,7 @@
 									| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
 							}}</strong>
 						</button>
-					}
-				} @else {
+				} @empty {
 					<div class="empty-state calendar-empty">
 						<mat-icon>event_available</mat-icon>
 						<p>本月沒有預計扣款</p>
