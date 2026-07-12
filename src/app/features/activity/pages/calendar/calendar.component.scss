@@ -6,15 +6,8 @@
 	border-radius: 12px;
 	padding: 3px;
 }
-.calendar-card {
-	border: 1px solid #e1e7ef;
-	box-shadow: 0 8px 30px rgba(24, 45, 78, 0.04);
-}
-.calendar-card mat-card-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 20px 22px;
+.calendar-heading {
+	width: 100%;
 }
 .month-total {
 	color: #718096;
@@ -24,8 +17,8 @@
 	font-size: 18px;
 	margin-left: 5px;
 }
-.calendar-card mat-card-content {
-	padding: 0 14px 16px;
+.calendar-content {
+	padding-top: 12px;
 }
 .weekday-grid,
 .calendar-grid {
@@ -113,14 +106,9 @@
 		gap: 8px;
 	}
 
-	.calendar-card mat-card-header {
+	.calendar-heading {
 		align-items: flex-start;
 		gap: 8px;
-		padding: 18px;
-	}
-
-	.calendar-card mat-card-content {
-		padding: 0 12px 12px;
 	}
 
 	.list-event {

@@ -11,4 +11,12 @@ html {
 			density: 0,
 		)
 	);
+
+	@include mat.card-overrides(
+		(
+			elevated-container-color: #fff,
+			filled-container-color: #eef6ff,
+			outlined-container-color: #fff,
+		)
+	);
 }

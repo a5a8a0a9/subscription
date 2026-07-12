@@ -1,134 +1,115 @@
-.summary-card {
-	height: 100%;
-	border: 1px solid #e6ebf2;
-	box-shadow: 0 8px 30px rgba(23, 43, 77, 0.05);
-}
-.summary-card mat-card-content {
-	display: flex;
-	align-items: center;
-	gap: 15px;
-	padding: 20px;
-}
-.summary-card span,
-.summary-card small {
+.summary-copy span,
+.summary-copy small {
 	display: block;
 	color: #718096;
 }
-.summary-card strong {
+
+.summary-value {
 	display: block;
+	margin-block: 4px;
 	font-size: 24px;
-	margin: 4px 0;
 }
-.summary-card small {
+
+.summary-copy small {
 	font-size: 11px;
 }
+
 .summary-icon {
-	width: 48px;
-	height: 48px;
 	display: grid;
 	place-items: center;
+	width: 48px;
+	height: 48px;
 	border-radius: 14px;
 	flex: none;
 }
-.summary-icon.blue {
-	background: #e8f2ff;
-	color: #2167ae;
-}
-.summary-icon.violet {
-	background: #f1eaff;
-	color: #7550b7;
-}
-.summary-icon.amber {
-	background: #fff3da;
-	color: #a56b00;
-}
-.summary-icon.green {
-	background: #e5f7ef;
-	color: #16835b;
-}
-.dashboard-body {
-	align-items: stretch;
-}
-.dashboard-body > div {
-	display: flex;
-}
-.panel-card {
+
+.summary-icon.blue { background: #e8f2ff; color: #2167ae; }
+.summary-icon.violet { background: #f1eaff; color: #7550b7; }
+.summary-icon.amber { background: #fff3da; color: #a56b00; }
+.summary-icon.green { background: #e5f7ef; color: #16835b; }
+
+.panel-heading {
 	width: 100%;
-	border: 1px solid #e6ebf2;
-	box-shadow: none;
 }
-.panel-card mat-card-header {
-	justify-content: space-between;
-	align-items: flex-start;
-	padding: 22px 22px 8px;
+
+.panel-content {
+	padding-top: 8px;
 }
-.panel-card mat-card-content {
-	padding: 10px 22px 22px;
-}
+
 .charge-row {
 	display: grid;
 	grid-template-columns: 52px 1fr auto;
 	align-items: center;
 	gap: 14px;
-	padding: 13px 0;
+	padding-block: 13px;
 	border-bottom: 1px solid #edf0f4;
 }
+
 .charge-row:last-child {
 	border: 0;
 }
+
 .date-chip {
-	background: #f2f6fb;
-	border-radius: 10px;
 	padding: 7px;
+	border-radius: 10px;
+	background: #f2f6fb;
 	text-align: center;
 }
+
 .date-chip strong,
 .date-chip span,
 .charge-name strong,
 .charge-name span {
 	display: block;
 }
+
 .date-chip span,
 .charge-name span {
-	font-size: 12px;
 	color: #718096;
+	font-size: 12px;
 }
+
 .charge-name strong {
 	margin-bottom: 3px;
 }
+
 .reminder-item {
 	display: flex;
 	align-items: center;
 	gap: 12px;
-	padding: 14px 0;
+	padding-block: 14px;
 	border-bottom: 1px solid #edf0f4;
 }
+
 .reminder-item mat-icon {
 	color: #d88719;
 }
+
 .reminder-item div > * {
 	display: block;
 }
+
 .reminder-item span {
-	font-size: 12px;
-	color: #718096;
 	margin-top: 3px;
+	color: #718096;
+	font-size: 12px;
 }
+
 .empty-state {
 	min-height: 220px;
 }
+
 .empty-state mat-icon {
-	font-size: 36px;
 	width: 36px;
 	height: 36px;
+	font-size: 36px;
 }
+
 .empty-state.compact {
 	min-height: 170px;
 }
+
 @media (max-width: 767px) {
-	.summary-card mat-card-content {
-		padding: 16px;
-	}
 	.charge-row {
 		grid-template-columns: 48px 1fr auto;
 	}

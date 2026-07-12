@@ -11,15 +11,17 @@
 	<div class="grid gap-3 summary-grid">
 		@for (card of summaryCards(); track card.label) {
 			<div class="g-col-12 g-col-sm-6 g-col-xl-3">
-				<mat-card class="summary-card">
+				<mat-card appearance="outlined">
 					<mat-card-content>
-						<div [class]="'summary-icon ' + card.tone">
-							<mat-icon>{{ card.icon }}</mat-icon>
-						</div>
-						<div>
-							<span>{{ card.label }}</span
-							><strong>{{ card.value }}</strong
-							><small>{{ card.hint }}</small>
+						<div class="summary-content d-flex align-items-center gap-3">
+							<div [class]="'summary-icon ' + card.tone">
+								<mat-icon>{{ card.icon }}</mat-icon>
+							</div>
+							<div class="summary-copy">
+								<span>{{ card.label }}</span>
+								<strong class="summary-value">{{ card.value }}</strong>
+								<small>{{ card.hint }}</small>
+							</div>
 						</div>
 					</mat-card-content>
 				</mat-card>
@@ -29,16 +31,18 @@
 
 	<div class="grid gap-4 dashboard-body">
 		<div class="g-col-12 g-col-lg-8">
-			<mat-card class="panel-card">
+			<mat-card appearance="outlined">
 				<mat-card-header>
-					<div>
-						<mat-card-title>即將扣款</mat-card-title
-						><mat-card-subtitle>未來 30 天的支出行程</mat-card-subtitle>
+					<div class="panel-heading d-flex align-items-start justify-content-between gap-3">
+						<div>
+							<mat-card-title>即將扣款</mat-card-title>
+							<mat-card-subtitle>未來 30 天的支出行程</mat-card-subtitle>
+						</div>
+						<a mat-button routerLink="/calendar">查看月曆</a>
 					</div>
-					<a mat-button routerLink="/calendar">查看月曆</a>
 				</mat-card-header>
 				<mat-card-content>
-					<div class="charge-list">
+					<div class="panel-content charge-list">
 						@for (
 								event of store.upcomingCharges().slice(0, 6);
 								track event.activityId + event.date
@@ -68,7 +72,7 @@
 			</mat-card>
 		</div>
 		<div class="g-col-12 g-col-lg-4">
-			<mat-card class="panel-card reminder-card">
+			<mat-card appearance="outlined">
 				<mat-card-header
 					><mat-card-title>近期提醒</mat-card-title
 					><mat-card-subtitle
@@ -76,6 +80,7 @@
 					></mat-card-header
 				>
 				<mat-card-content>
+					<div class="panel-content">
 					@for (event of dueSoon(); track event.activityId + event.date) {
 							<div class="reminder-item">
 								<mat-icon>schedule</mat-icon>
@@ -90,6 +95,7 @@
 							<p>目前沒有近期提醒</p>
 						</div>
 					}
+					</div>
 				</mat-card-content>
 			</mat-card>
 		</div>

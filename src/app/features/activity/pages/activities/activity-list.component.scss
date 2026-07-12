@@ -1,33 +1,15 @@
-.filter-card {
-	border: 1px solid #e5eaf1;
-	box-shadow: none;
-}
-
 .result-meta {
 	color: #718096;
 	font-size: 13px;
 }
 
-.activity-card {
-	height: 100%;
+.activity-card-shell {
 	cursor: pointer;
-	border: 1px solid #e5eaf1;
-	box-shadow: 0 8px 25px rgba(25, 46, 80, 0.04);
-	transition:
-		transform 0.2s,
-		box-shadow 0.2s;
+	transition: transform 0.2s;
 }
 
-.activity-card:hover {
+.activity-card-shell:hover {
 	transform: translateY(-3px);
-	box-shadow: 0 14px 34px rgba(25, 46, 80, 0.1);
-}
-
-.activity-card mat-card-content {
-	display: flex;
-	flex-direction: column;
-	gap: 8px;
-	padding: 20px;
 }
 
 .card-top,
@@ -74,7 +56,7 @@
 	color: #69778a;
 }
 
-.activity-card h2 {
+.activity-card-content h2 {
 	margin: 0;
 	font-size: 19px;
 }
