@@ -1,6 +1,8 @@
 .topbar {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	right: 0;
+	left: 0;
 	z-index: 20;
 	height: 68px;
 	padding: 0 max(18px, calc((100vw - 1280px) / 2));
