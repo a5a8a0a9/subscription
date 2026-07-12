@@ -1,0 +1,62 @@
+.detail-heading {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 24px 24px 0;
+}
+.detail-heading h2 {
+	padding: 0;
+	margin: 0;
+}
+.detail-icon {
+	width: 48px;
+	height: 48px;
+	border-radius: 14px;
+	display: grid;
+	place-items: center;
+	background: #e8f1ff;
+	color: #1c5d99;
+}
+.eyebrow {
+	margin: 0 0 2px;
+	color: #65758b;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+}
+.detail-grid {
+	min-width: 360px;
+	padding: 12px 0;
+}
+.detail-grid div,
+.notes {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.detail-grid span,
+.notes span {
+	color: #718096;
+	font-size: 12px;
+}
+.notes p {
+	margin: 0;
+	white-space: pre-wrap;
+}
+.website {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	color: #1c5d99;
+	text-decoration: none;
+}
+mat-dialog-content {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+@media (max-width: 599px) {
+	.detail-grid {
+		min-width: 0;
+	}
+}

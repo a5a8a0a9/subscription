@@ -1,59 +1,33 @@
-# Subscription
+# SubTrack
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.
+以 Angular 22、Angular Material 與 Bootstrap 5 建立的個人訂閱管理 PWA。資料儲存在瀏覽器本機，不需要帳號或後端服務。
 
-## Development server
+## 開發環境
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- Node.js 22.22.3
+- npm
 
 ```bash
-ng generate component component-name
+npm install
+npm start
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+開啟 `http://localhost:4200/` 即可使用。
+
+## 驗證
 
 ```bash
-ng generate --help
+npm test -- --watch=false --browsers=ChromeHeadless
+npm run build
 ```
 
-## Building
+Production build 會輸出至 `dist/sub-track/browser/`。
 
-To build the project run:
+## 功能
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- 儀表板與未來 30 天支出總覽
+- 訂閱新增、編輯、刪除、搜尋與篩選
+- 月、季、年及自訂計費週期
+- 預計扣款月曆
+- 站內提醒與瀏覽器通知
+- PWA 離線啟動

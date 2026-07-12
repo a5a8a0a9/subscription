@@ -1,0 +1,105 @@
+<yo-page-container title="總覽">
+	<div page-actions class="d-flex align-items-center gap-2 flex-wrap">
+		<button mat-stroked-button (click)="enableNotifications()">
+			<mat-icon>notifications</mat-icon>{{ notificationLabel() }}
+		</button>
+		<a mat-flat-button routerLink="/activities" [queryParams]="{ create: 1 }">
+			<mat-icon>add</mat-icon>新增訂閱
+		</a>
+	</div>
+
+	<div class="grid gap-3">
+		@for (card of summaryCards(); track card.label) {
+			<div class="g-col-12 g-col-sm-6 g-col-xl-3">
+				<mat-card appearance="outlined">
+					<mat-card-content>
+						<div class="d-flex align-items-center gap-3">
+							<div [class]="'summary-icon ' + card.tone">
+								<mat-icon>{{ card.icon }}</mat-icon>
+							</div>
+							<div class="summary-copy">
+								<span>{{ card.label }}</span>
+								<strong class="summary-value">{{ card.value }}</strong>
+								<small>{{ card.hint }}</small>
+							</div>
+						</div>
+					</mat-card-content>
+				</mat-card>
+			</div>
+		}
+	</div>
+
+	<div class="grid gap-4">
+		<div class="g-col-12 g-col-lg-8">
+			<mat-card appearance="outlined">
+				<mat-card-header>
+					<div
+						class="panel-heading d-flex align-items-start justify-content-between gap-3"
+					>
+						<div>
+							<mat-card-title>即將扣款</mat-card-title>
+							<mat-card-subtitle>未來 30 天的支出行程</mat-card-subtitle>
+						</div>
+						<a mat-button routerLink="/calendar">查看月曆</a>
+					</div>
+				</mat-card-header>
+				<mat-card-content>
+					<div class="panel-content">
+						@for (
+							event of store.upcomingCharges().slice(0, 6);
+							track event.activityId + event.date
+						) {
+							<div class="charge-row">
+								<div class="date-chip">
+									<strong>{{ event.date | date: "dd" : "" : "zh-TW" }}</strong
+									><span>{{ event.date | date: "MMM" : "" : "zh-TW" }}</span>
+								</div>
+								<div class="charge-name">
+									<strong>{{ event.activityName }}</strong
+									><span>{{ event.category }}</span>
+								</div>
+								<strong>{{
+									event.amount
+										| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
+								}}</strong>
+							</div>
+						} @empty {
+							<div class="empty-state">
+								<mat-icon>event_available</mat-icon>
+								<p>未來 30 天沒有預計扣款</p>
+							</div>
+						}
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</div>
+		<div class="g-col-12 g-col-lg-4">
+			<mat-card appearance="outlined">
+				<mat-card-header
+					><mat-card-title>近期提醒</mat-card-title
+					><mat-card-subtitle
+						>根據每筆項目的提醒設定</mat-card-subtitle
+					></mat-card-header
+				>
+				<mat-card-content>
+					<div class="panel-content">
+						@for (event of dueSoon(); track event.activityId + event.date) {
+							<div class="reminder-item">
+								<mat-icon>schedule</mat-icon>
+								<div>
+									<strong>{{ event.activityName }}</strong
+									><span>{{ event.date }} 扣款</span>
+								</div>
+							</div>
+						} @empty {
+							<div class="empty-state compact">
+								<mat-icon>notifications_none</mat-icon>
+								<p>目前沒有近期提醒</p>
+							</div>
+						}
+					</div>
+				</mat-card-content>
+			</mat-card>
+		</div>
+	</div>
+</yo-page-container>

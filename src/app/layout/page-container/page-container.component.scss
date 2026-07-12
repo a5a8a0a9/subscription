@@ -1,0 +1,24 @@
+.page-header {
+	min-height: 48px;
+}
+
+.page-header h1 {
+	margin: 0;
+	font-size: clamp(26px, 3vw, 34px);
+	letter-spacing: -0.03em;
+}
+
+.page-actions {
+	min-height: 48px;
+}
+
+@media (max-width: 640px) {
+	.page-header {
+		align-items: stretch !important;
+		flex-direction: column;
+	}
+
+	.page-actions {
+		width: 100%;
+	}
+}

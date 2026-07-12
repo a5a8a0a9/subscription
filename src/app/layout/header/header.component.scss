@@ -1,0 +1,40 @@
+.topbar {
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 20;
+	height: 68px;
+	padding: 0 max(18px, calc((100vw - 1280px) / 2));
+	background: rgba(255, 255, 255, 0.92);
+	border-bottom: 1px solid #e5eaf1;
+	backdrop-filter: blur(14px);
+	justify-content: center;
+}
+
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #172b4d;
+	font-weight: 800;
+	text-decoration: none;
+	font-size: 19px;
+}
+
+.brand-mark {
+	display: grid;
+	place-items: center;
+	width: 36px;
+	height: 36px;
+	border-radius: 11px;
+	color: white;
+	background: linear-gradient(135deg, #2367a8, #163f70);
+}
+
+@media (max-width: 700px) {
+	.topbar {
+		height: 62px;
+		padding-inline: 14px;
+	}
+}

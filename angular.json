@@ -6,7 +6,7 @@
 	},
 	"newProjectRoot": "projects",
 	"projects": {
-		"subscription": {
+		"sub-track": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
@@ -67,10 +67,10 @@
 					"builder": "@angular/build:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "subscription:build:production"
+							"buildTarget": "sub-track:build:production"
 						},
 						"development": {
-							"buildTarget": "subscription:build:development"
+							"buildTarget": "sub-track:build:development"
 						}
 					},
 					"defaultConfiguration": "development"

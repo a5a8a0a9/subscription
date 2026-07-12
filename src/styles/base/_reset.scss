@@ -1,0 +1,25 @@
+@use "../abstracts/variables" as vars;
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	color-scheme: light;
+	background: vars.$color-background;
+	color: vars.$color-text;
+	font: var(--mat-sys-body-medium);
+	margin: 0;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+button,
+input,
+textarea,
+select {
+	font: inherit;
+}

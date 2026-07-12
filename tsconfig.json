@@ -16,8 +16,7 @@
     "target": "ES2022",
     "module": "preserve",
     "paths": {
-      "@theme": ["./src/app/theme/index"],
-      "@shared/*": ["./src/app/shared/*"]
+      "@layout/*": ["./src/app/layout/*"],
     }
   },
   "angularCompilerOptions": {

@@ -1,0 +1,99 @@
+.result-meta {
+	color: #718096;
+	font-size: 13px;
+}
+
+.activity-card-shell {
+	cursor: pointer;
+	transition: transform 0.2s;
+}
+
+.activity-card-shell:hover {
+	transform: translateY(-3px);
+}
+
+.card-top,
+.card-actions,
+.billing-date {
+	display: flex;
+	align-items: center;
+}
+
+.card-top,
+.card-actions {
+	justify-content: space-between;
+}
+
+.service-icon {
+	display: grid;
+	place-items: center;
+	width: 46px;
+	height: 46px;
+	border-radius: 14px;
+	background: linear-gradient(135deg, #dfeeff, #edf5ff);
+	color: #2465a4;
+	font-size: 20px;
+	font-weight: 800;
+}
+
+.status-pill {
+	padding: 5px 9px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 700;
+}
+
+.status-pill.active {
+	background: #e5f7ef;
+	color: #137b56;
+}
+.status-pill.paused {
+	background: #fff3da;
+	color: #946000;
+}
+.status-pill.cancelled {
+	background: #edf0f4;
+	color: #69778a;
+}
+
+.activity-card-content h2 {
+	margin: 0;
+	font-size: 19px;
+}
+
+.category,
+.amount small {
+	color: #718096;
+	font-size: 12px;
+}
+
+.amount {
+	padding-block: 12px;
+	font-size: 25px;
+	font-weight: 750;
+}
+
+.amount small {
+	font-weight: 500;
+}
+
+.billing-date {
+	gap: 7px;
+	color: #68778b;
+	font-size: 13px;
+}
+
+.billing-date mat-icon {
+	width: 18px;
+	height: 18px;
+	font-size: 18px;
+}
+
+.card-actions {
+	padding-top: 10px;
+	border-top: 1px solid #edf0f4;
+}
+
+.empty-state {
+	min-height: 300px;
+}
