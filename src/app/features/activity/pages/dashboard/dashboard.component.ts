@@ -12,6 +12,7 @@ import { PageContainerComponent } from '../../../../layout/page-container/page-c
 @Component({
 	selector: 'yo-dashboard',
 	standalone: true,
+	host: { class: 'd-block' },
 	imports: [CommonModule, RouterLink, MatButtonModule, MatCardModule, MatIconModule, MatSnackBarModule, PageContainerComponent],
 	templateUrl: './dashboard.component.html',
 	styleUrl: './dashboard.component.scss',

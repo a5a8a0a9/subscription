@@ -1,4 +1,10 @@
 @use "bootstrap/scss/bootstrap-grid" with (
 	$enable-cssgrid: true
 );
-@use "bootstrap/scss/bootstrap-utilities";
+
+// bootstrap-grid excludes spacing utilities; emit only the Bootstrap gap scale used by the app.
+@each $step, $size in (2: .5rem, 3: 1rem, 4: 1.5rem) {
+	.gap-#{$step} {
+		gap: $size !important;
+	}
+}

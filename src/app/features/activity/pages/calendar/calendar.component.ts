@@ -22,6 +22,7 @@ interface CalendarDay {
 @Component({
 	selector: 'yo-calendar',
 	standalone: true,
+	host: { class: 'd-block' },
 	imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule, PageContainerComponent],
 	templateUrl: './calendar.component.html',
 	styleUrl: './calendar.component.scss',

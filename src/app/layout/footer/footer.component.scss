@@ -1,12 +1,9 @@
-:host {
+.bottom-navigation {
 	position: fixed;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	z-index: 30;
-}
-
-.bottom-navigation {
 	display: flex;
 	justify-content: center;
 	padding: 8px 16px max(8px, env(safe-area-inset-bottom));

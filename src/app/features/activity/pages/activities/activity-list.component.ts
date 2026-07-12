@@ -25,6 +25,7 @@ type SortOption = 'date' | 'name' | 'amountHigh' | 'amountLow';
 @Component({
 	selector: 'yo-activity-list',
 	standalone: true,
+	host: { class: 'd-block' },
 	imports: [CommonModule, MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, PageContainerComponent],
 	templateUrl: './activity-list.component.html',
 	styleUrl: './activity-list.component.scss',

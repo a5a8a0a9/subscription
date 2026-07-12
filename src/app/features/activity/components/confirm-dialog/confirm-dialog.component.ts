@@ -11,6 +11,7 @@ export interface ConfirmDialogData {
 @Component({
 	selector: 'yo-confirm-dialog',
 	standalone: true,
+	host: { class: 'd-block' },
 	imports: [MatDialogModule, MatButtonModule],
 	templateUrl: './confirm-dialog.component.html',
 	styleUrl: './confirm-dialog.component.scss',
