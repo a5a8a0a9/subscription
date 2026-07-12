@@ -45,14 +45,37 @@
 				</mat-select>
 			</mat-form-field>
 			<mat-form-field appearance="outline" class="g-col-12 g-col-md-6">
-				<mat-label>開始日期</mat-label
-				><input matInput type="date" formControlName="startDate" />
+				<mat-label>開始日期</mat-label>
+				<input
+					matInput
+					[matDatepicker]="startDatePicker"
+					formControlName="startDate"
+				/>
+				<mat-datepicker-toggle
+					matIconSuffix
+					[for]="startDatePicker"
+				/>
+				<mat-datepicker #startDatePicker />
+				@if (form.controls["startDate"].invalid) {
+					<mat-error>請選擇開始日期</mat-error>
+				}
 			</mat-form-field>
 			<mat-form-field appearance="outline" class="g-col-12 g-col-md-6">
-				<mat-label>下次扣款日</mat-label
-				><input matInput type="date" formControlName="nextBillingDate" />
+				<mat-label>下次扣款日</mat-label>
+				<input
+					matInput
+					[matDatepicker]="nextBillingDatePicker"
+					formControlName="nextBillingDate"
+				/>
+				<mat-datepicker-toggle
+					matIconSuffix
+					[for]="nextBillingDatePicker"
+				/>
+				<mat-datepicker #nextBillingDatePicker />
 				@if (form.hasError("billingDateOrder")) {
 					<mat-error>下次扣款日不得早於開始日期</mat-error>
+				} @else if (form.controls["nextBillingDate"].invalid) {
+					<mat-error>請選擇下次扣款日</mat-error>
 				}
 			</mat-form-field>
 			<mat-form-field appearance="outline" class="g-col-12 g-col-md-6">

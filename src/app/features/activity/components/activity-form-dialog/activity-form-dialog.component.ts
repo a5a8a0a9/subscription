@@ -9,6 +9,7 @@ import {
 	Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import {
 	MAT_DIALOG_DATA,
 	MatDialogModule,
@@ -27,6 +28,10 @@ import {
 	BillingCycle,
 	BillingUnit,
 } from '../../models/activity.model';
+import {
+	formatLocalDate,
+	parseLocalDate,
+} from '../../utils/billing-date.utils';
 
 export interface ActivityFormData {
 	item?: Activity;
@@ -40,6 +45,7 @@ export interface ActivityFormData {
 		ReactiveFormsModule,
 		MatDialogModule,
 		MatButtonModule,
+		MatDatepickerModule,
 		MatFormFieldModule,
 		MatInputModule,
 		MatSelectModule,
@@ -81,14 +87,14 @@ export class ActivityFormDialogComponent {
 				status: new FormControl<ActivityStatus>(item?.status ?? 'active', {
 					nonNullable: true,
 				}),
-				startDate: new FormControl(item?.startDate ?? '', {
-					nonNullable: true,
-					validators: [Validators.required],
-				}),
-				nextBillingDate: new FormControl(item?.nextBillingDate ?? '', {
-					nonNullable: true,
-					validators: [Validators.required],
-				}),
+				startDate: new FormControl<Date | null>(
+					item ? parseLocalDate(item.startDate) : null,
+					{ validators: [Validators.required] },
+				),
+				nextBillingDate: new FormControl<Date | null>(
+					item ? parseLocalDate(item.nextBillingDate) : null,
+					{ validators: [Validators.required] },
+				),
 				cycleKind: new FormControl<BillingCycle['kind']>(
 					item?.billingCycle.kind ?? 'monthly',
 					{ nonNullable: true },
@@ -120,6 +126,7 @@ export class ActivityFormDialogComponent {
 	save(): void {
 		if (this.form.invalid) return;
 		const value = this.form.getRawValue();
+		if (!value.startDate || !value.nextBillingDate) return;
 		const billingCycle: BillingCycle =
 			value.cycleKind === 'custom'
 				? { kind: 'custom', interval: value.interval, unit: value.unit }
@@ -129,8 +136,8 @@ export class ActivityFormDialogComponent {
 			amount: Math.round(value.amount),
 			category: value.category.trim(),
 			status: value.status,
-			startDate: value.startDate,
-			nextBillingDate: value.nextBillingDate,
+			startDate: formatLocalDate(value.startDate),
+			nextBillingDate: formatLocalDate(value.nextBillingDate),
 			billingCycle,
 			reminderDays: value.reminderEnabled ? value.reminderDays : null,
 			website: value.website.trim(),
@@ -142,10 +149,8 @@ export class ActivityFormDialogComponent {
 function billingDateOrderValidator(
 	control: AbstractControl,
 ): ValidationErrors | null {
-	const startDate = control.get('startDate')?.value as string | undefined;
-	const nextBillingDate = control.get('nextBillingDate')?.value as
-		| string
-		| undefined;
+	const startDate = control.get('startDate')?.value as Date | null;
+	const nextBillingDate = control.get('nextBillingDate')?.value as Date | null;
 	return startDate && nextBillingDate && startDate > nextBillingDate
 		? { billingDateOrder: true }
 		: null;
