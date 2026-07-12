@@ -11,6 +11,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { ActivatedRoute } from '@angular/router';
 import { PageContainerComponent } from '@layout/page-container/page-container.component';
+import { ActivityDetailDialogComponent } from '../../components/activity-detail-dialog/activity-detail-dialog.component';
+import { ActivityFormDialogComponent } from '../../components/activity-form-dialog/activity-form-dialog.component';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 import { ActivityStore } from '../../data-access/activity.store';
 import {
 	ACTIVITY_CATEGORIES,
@@ -19,11 +22,6 @@ import {
 	ActivityStatus,
 } from '../../models/activity.model';
 import { cycleLabel } from '../../utils/billing-date.utils';
-import {
-	ActivityDetailDialogComponent,
-	ActivityFormDialogComponent,
-	ConfirmDialogComponent,
-} from './activity-dialogs';
 
 type SortOption = 'date' | 'name' | 'amountHigh' | 'amountLow';
 

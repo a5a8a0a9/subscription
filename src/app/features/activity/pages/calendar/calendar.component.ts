@@ -5,13 +5,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { PageContainerComponent } from '@layout/page-container/page-container.component';
+import { ActivityDetailDialogComponent } from '../../components/activity-detail-dialog/activity-detail-dialog.component';
+import { ActivityFormDialogComponent } from '../../components/activity-form-dialog/activity-form-dialog.component';
 import { ActivityStore } from '../../data-access/activity.store';
 import { Activity } from '../../models/activity.model';
 import { formatLocalDate } from '../../utils/billing-date.utils';
-import {
-	ActivityDetailDialogComponent,
-	ActivityFormDialogComponent,
-} from '../activities/activity-dialogs';
 
 interface CalendarDay {
 	date: Date;
