@@ -18,13 +18,14 @@ import {
 	ActivityFormDialogComponent,
 	ConfirmDialogComponent,
 } from './activity-dialogs';
+import { PageContainerComponent } from '../../../../layout/page-container/page-container.component';
 
 type SortOption = 'date' | 'name' | 'amountHigh' | 'amountLow';
 
 @Component({
 	selector: 'yo-activity-list',
 	standalone: true,
-	imports: [CommonModule, MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule],
+	imports: [CommonModule, MatButtonModule, MatCardModule, MatChipsModule, MatDialogModule, MatFormFieldModule, MatIconModule, MatInputModule, MatSelectModule, PageContainerComponent],
 	templateUrl: './activity-list.component.html',
 	styleUrl: './activity-list.component.scss',
 })

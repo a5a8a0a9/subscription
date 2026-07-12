@@ -7,11 +7,12 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
 import { ActivityStore } from '../../data-access/activity.store';
 import { ReminderService } from '../../data-access/reminder.service';
+import { PageContainerComponent } from '../../../../layout/page-container/page-container.component';
 
 @Component({
 	selector: 'yo-dashboard',
 	standalone: true,
-	imports: [CommonModule, RouterLink, MatButtonModule, MatCardModule, MatIconModule, MatSnackBarModule],
+	imports: [CommonModule, RouterLink, MatButtonModule, MatCardModule, MatIconModule, MatSnackBarModule, PageContainerComponent],
 	templateUrl: './dashboard.component.html',
 	styleUrl: './dashboard.component.scss',
 })

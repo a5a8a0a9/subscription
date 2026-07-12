@@ -1,7 +1,7 @@
-<section class="page-heading">
-	<h1>訂閱管理</h1>
-	<button mat-flat-button (click)="openForm()"><mat-icon>add</mat-icon>新增訂閱</button>
-</section>
+<yo-page-container title="訂閱管理">
+	<div page-actions class="d-flex align-items-center">
+		<button mat-flat-button (click)="openForm()"><mat-icon>add</mat-icon>新增訂閱</button>
+	</div>
 
 <mat-card class="filter-card">
 	<mat-card-content class="grid filter-grid">
@@ -54,3 +54,4 @@
 } @else {
 	<div class="empty-state"><mat-icon>search_off</mat-icon><h2>找不到符合的訂閱</h2><p>請調整搜尋或篩選條件。</p></div>
 }
+</yo-page-container>

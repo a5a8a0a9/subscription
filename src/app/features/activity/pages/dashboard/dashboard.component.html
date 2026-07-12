@@ -1,6 +1,5 @@
-<section class="page-heading">
-	<h1>總覽</h1>
-	<div class="heading-actions">
+<yo-page-container title="總覽">
+	<div page-actions class="heading-actions d-flex align-items-center">
 		<button mat-stroked-button (click)="enableNotifications()">
 			<mat-icon>notifications</mat-icon>{{ notificationLabel() }}
 		</button>
@@ -8,7 +7,6 @@
 			<mat-icon>add</mat-icon>新增訂閱
 		</a>
 	</div>
-</section>
 
 <div class="grid summary-grid">
 	@for (card of summaryCards(); track card.label) {
@@ -62,3 +60,4 @@
 		</mat-card>
 	</div>
 </div>
+</yo-page-container>

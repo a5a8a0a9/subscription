@@ -1,11 +1,9 @@
-<section class="page-heading">
-	<h1>訂閱月曆</h1>
-	<div class="month-nav">
+<yo-page-container title="訂閱月曆">
+	<div page-actions class="month-nav">
 		<button mat-icon-button (click)="moveMonth(-1)" aria-label="上一個月"><mat-icon>chevron_left</mat-icon></button>
 		<button mat-button (click)="goToday()">今天</button>
 		<button mat-icon-button (click)="moveMonth(1)" aria-label="下一個月"><mat-icon>chevron_right</mat-icon></button>
 	</div>
-</section>
 
 <mat-card class="calendar-card">
 	<mat-card-header>
@@ -46,3 +44,4 @@
 		</div>
 	</mat-card-content>
 </mat-card>
+</yo-page-container>

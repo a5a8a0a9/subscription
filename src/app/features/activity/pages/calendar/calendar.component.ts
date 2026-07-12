@@ -8,6 +8,7 @@ import { ActivityDetailDialogComponent, ActivityFormDialogComponent } from '../a
 import { ActivityStore } from '../../data-access/activity.store';
 import { Activity } from '../../models/activity.model';
 import { formatLocalDate } from '../../utils/billing-date.utils';
+import { PageContainerComponent } from '../../../../layout/page-container/page-container.component';
 
 interface CalendarDay {
 	date: Date;
@@ -21,7 +22,7 @@ interface CalendarDay {
 @Component({
 	selector: 'yo-calendar',
 	standalone: true,
-	imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule],
+	imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule, PageContainerComponent],
 	templateUrl: './calendar.component.html',
 	styleUrl: './calendar.component.scss',
 })
