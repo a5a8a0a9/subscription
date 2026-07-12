@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ReminderService } from './features/activity-management/data-access/reminder.service';
+import { ReminderService } from './features/activity/data-access/reminder.service';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 
