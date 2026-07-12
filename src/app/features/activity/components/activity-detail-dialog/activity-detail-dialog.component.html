@@ -1,17 +1,58 @@
 <div class="detail-heading">
 	<div class="detail-icon"><mat-icon>receipt_long</mat-icon></div>
-	<div><p class="eyebrow">{{ item.category }}</p><h2 mat-dialog-title>{{ item.name }}</h2></div>
+
+	<div>
+		<p class="eyebrow">{{ item.category }}</p>
+		<h2 mat-dialog-title>{{ item.name }}</h2>
+	</div>
 </div>
+
 <mat-dialog-content>
 	<div class="grid gap-3 detail-grid">
-		<div class="g-col-12 g-col-sm-6"><span>金額</span><strong>{{ item.amount | currency: 'TWD' : 'symbol-narrow' : '1.0-0' : 'zh-TW' }}</strong></div>
-		<div class="g-col-12 g-col-sm-6"><span>狀態</span><strong>{{ statusLabels[item.status] }}</strong></div>
-		<div class="g-col-12 g-col-sm-6"><span>開始日期</span><strong>{{ item.startDate }}</strong></div>
-		<div class="g-col-12 g-col-sm-6"><span>下次扣款</span><strong>{{ item.nextBillingDate }}</strong></div>
-		<div class="g-col-12 g-col-sm-6"><span>週期</span><strong>{{ cycleLabel(item.billingCycle) }}</strong></div>
-		<div class="g-col-12 g-col-sm-6"><span>提醒</span><strong>{{ item.reminderDays === null ? '已關閉' : '提前 ' + item.reminderDays + ' 天' }}</strong></div>
+		<div class="g-col-12 g-col-sm-6">
+			<span>金額</span
+			><strong>{{
+				item.amount | currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
+			}}</strong>
+		</div>
+		<div class="g-col-12 g-col-sm-6">
+			<span>狀態</span><strong>{{ statusLabels[item.status] }}</strong>
+		</div>
+		<div class="g-col-12 g-col-sm-6">
+			<span>開始日期</span><strong>{{ item.startDate }}</strong>
+		</div>
+		<div class="g-col-12 g-col-sm-6">
+			<span>下次扣款</span><strong>{{ item.nextBillingDate }}</strong>
+		</div>
+		<div class="g-col-12 g-col-sm-6">
+			<span>週期</span><strong>{{ cycleLabel(item.billingCycle) }}</strong>
+		</div>
+		<div class="g-col-12 g-col-sm-6">
+			<span>提醒</span
+			><strong>{{
+				item.reminderDays === null
+					? "已關閉"
+					: "提前 " + item.reminderDays + " 天"
+			}}</strong>
+		</div>
 	</div>
-	@if (item.notes) { <div class="notes"><span>備註</span><p>{{ item.notes }}</p></div> }
-	@if (item.website) { <a class="website" [href]="item.website" target="_blank" rel="noopener"><mat-icon>open_in_new</mat-icon>開啟服務網站</a> }
+
+	@if (item.notes) {
+		<div class="notes">
+			<span>備註</span>
+			<p>{{ item.notes }}</p>
+		</div>
+	}
+	@if (item.website) {
+		<a class="website" [href]="item.website" target="_blank" rel="noopener"
+			><mat-icon>open_in_new</mat-icon>開啟服務網站</a
+		>
+	}
 </mat-dialog-content>
-<mat-dialog-actions align="end"><button mat-button mat-dialog-close>關閉</button><button mat-flat-button [mat-dialog-close]="'edit'"><mat-icon>edit</mat-icon>編輯</button></mat-dialog-actions>
+
+<mat-dialog-actions align="end"
+	><button mat-button mat-dialog-close>關閉</button
+	><button mat-flat-button [mat-dialog-close]="'edit'">
+		<mat-icon>edit</mat-icon>編輯
+	</button></mat-dialog-actions
+>

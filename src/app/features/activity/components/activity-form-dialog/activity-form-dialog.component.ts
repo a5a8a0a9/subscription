@@ -1,8 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
+import {
+	AbstractControl,
+	FormControl,
+	FormGroup,
+	ReactiveFormsModule,
+	ValidationErrors,
+	Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+	MAT_DIALOG_DATA,
+	MatDialogModule,
+	MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -39,7 +50,10 @@ export interface ActivityFormData {
 })
 export class ActivityFormDialogComponent {
 	readonly data = inject<ActivityFormData>(MAT_DIALOG_DATA);
-	private readonly dialogRef = inject<MatDialogRef<ActivityFormDialogComponent, ActivityDraft>>(MatDialogRef);
+	private readonly dialogRef =
+		inject<MatDialogRef<ActivityFormDialogComponent, ActivityDraft>>(
+			MatDialogRef,
+		);
 	readonly categories = ACTIVITY_CATEGORIES;
 	readonly statuses: ActivityStatus[] = ['active', 'paused', 'cancelled'];
 	readonly statusLabels = ACTIVITY_STATUS_LABELS;
@@ -48,30 +62,68 @@ export class ActivityFormDialogComponent {
 
 	constructor() {
 		const item = this.data.item;
-		const custom = item?.billingCycle.kind === 'custom' ? item.billingCycle : undefined;
-		this.form = new FormGroup({
-			name: new FormControl(item?.name ?? '', { nonNullable: true, validators: [Validators.required, Validators.maxLength(80)] }),
-			amount: new FormControl(item?.amount ?? 0, { nonNullable: true, validators: [Validators.required, Validators.min(1)] }),
-			category: new FormControl(item?.category ?? '其他', { nonNullable: true, validators: [Validators.required] }),
-			status: new FormControl<ActivityStatus>(item?.status ?? 'active', { nonNullable: true }),
-			startDate: new FormControl(item?.startDate ?? '', { nonNullable: true, validators: [Validators.required] }),
-			nextBillingDate: new FormControl(item?.nextBillingDate ?? '', { nonNullable: true, validators: [Validators.required] }),
-			cycleKind: new FormControl<BillingCycle['kind']>(item?.billingCycle.kind ?? 'monthly', { nonNullable: true }),
-			interval: new FormControl(custom?.interval ?? 1, { nonNullable: true, validators: [Validators.required, Validators.min(1)] }),
-			unit: new FormControl<BillingUnit>(custom?.unit ?? 'month', { nonNullable: true }),
-			reminderEnabled: new FormControl(item ? item.reminderDays !== null : true, { nonNullable: true }),
-			reminderDays: new FormControl(item?.reminderDays ?? 3, { nonNullable: true }),
-			website: new FormControl(item?.website ?? '', { nonNullable: true }),
-			notes: new FormControl(item?.notes ?? '', { nonNullable: true, validators: [Validators.maxLength(500)] }),
-		}, { validators: billingDateOrderValidator });
+		const custom =
+			item?.billingCycle.kind === 'custom' ? item.billingCycle : undefined;
+		this.form = new FormGroup(
+			{
+				name: new FormControl(item?.name ?? '', {
+					nonNullable: true,
+					validators: [Validators.required, Validators.maxLength(80)],
+				}),
+				amount: new FormControl(item?.amount ?? 0, {
+					nonNullable: true,
+					validators: [Validators.required, Validators.min(1)],
+				}),
+				category: new FormControl(item?.category ?? '其他', {
+					nonNullable: true,
+					validators: [Validators.required],
+				}),
+				status: new FormControl<ActivityStatus>(item?.status ?? 'active', {
+					nonNullable: true,
+				}),
+				startDate: new FormControl(item?.startDate ?? '', {
+					nonNullable: true,
+					validators: [Validators.required],
+				}),
+				nextBillingDate: new FormControl(item?.nextBillingDate ?? '', {
+					nonNullable: true,
+					validators: [Validators.required],
+				}),
+				cycleKind: new FormControl<BillingCycle['kind']>(
+					item?.billingCycle.kind ?? 'monthly',
+					{ nonNullable: true },
+				),
+				interval: new FormControl(custom?.interval ?? 1, {
+					nonNullable: true,
+					validators: [Validators.required, Validators.min(1)],
+				}),
+				unit: new FormControl<BillingUnit>(custom?.unit ?? 'month', {
+					nonNullable: true,
+				}),
+				reminderEnabled: new FormControl(
+					item ? item.reminderDays !== null : true,
+					{ nonNullable: true },
+				),
+				reminderDays: new FormControl(item?.reminderDays ?? 3, {
+					nonNullable: true,
+				}),
+				website: new FormControl(item?.website ?? '', { nonNullable: true }),
+				notes: new FormControl(item?.notes ?? '', {
+					nonNullable: true,
+					validators: [Validators.maxLength(500)],
+				}),
+			},
+			{ validators: billingDateOrderValidator },
+		);
 	}
 
 	save(): void {
 		if (this.form.invalid) return;
 		const value = this.form.getRawValue();
-		const billingCycle: BillingCycle = value.cycleKind === 'custom'
-			? { kind: 'custom', interval: value.interval, unit: value.unit }
-			: { kind: value.cycleKind };
+		const billingCycle: BillingCycle =
+			value.cycleKind === 'custom'
+				? { kind: 'custom', interval: value.interval, unit: value.unit }
+				: { kind: value.cycleKind };
 		this.dialogRef.close({
 			name: value.name.trim(),
 			amount: Math.round(value.amount),
@@ -87,8 +139,14 @@ export class ActivityFormDialogComponent {
 	}
 }
 
-function billingDateOrderValidator(control: AbstractControl): ValidationErrors | null {
+function billingDateOrderValidator(
+	control: AbstractControl,
+): ValidationErrors | null {
 	const startDate = control.get('startDate')?.value as string | undefined;
-	const nextBillingDate = control.get('nextBillingDate')?.value as string | undefined;
-	return startDate && nextBillingDate && startDate > nextBillingDate ? { billingDateOrder: true } : null;
+	const nextBillingDate = control.get('nextBillingDate')?.value as
+		| string
+		| undefined;
+	return startDate && nextBillingDate && startDate > nextBillingDate
+		? { billingDateOrder: true }
+		: null;
 }

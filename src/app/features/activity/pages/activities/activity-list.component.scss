@@ -12,13 +12,15 @@
 	height: 100%;
 	cursor: pointer;
 	border: 1px solid #e5eaf1;
-	box-shadow: 0 8px 25px rgba(25, 46, 80, .04);
-	transition: transform .2s, box-shadow .2s;
+	box-shadow: 0 8px 25px rgba(25, 46, 80, 0.04);
+	transition:
+		transform 0.2s,
+		box-shadow 0.2s;
 }
 
 .activity-card:hover {
 	transform: translateY(-3px);
-	box-shadow: 0 14px 34px rgba(25, 46, 80, .1);
+	box-shadow: 0 14px 34px rgba(25, 46, 80, 0.1);
 }
 
 .activity-card mat-card-content {
@@ -59,9 +61,18 @@
 	font-weight: 700;
 }
 
-.status-pill.active { background: #e5f7ef; color: #137b56; }
-.status-pill.paused { background: #fff3da; color: #946000; }
-.status-pill.cancelled { background: #edf0f4; color: #69778a; }
+.status-pill.active {
+	background: #e5f7ef;
+	color: #137b56;
+}
+.status-pill.paused {
+	background: #fff3da;
+	color: #946000;
+}
+.status-pill.cancelled {
+	background: #edf0f4;
+	color: #69778a;
+}
 
 .activity-card h2 {
 	margin: 0;

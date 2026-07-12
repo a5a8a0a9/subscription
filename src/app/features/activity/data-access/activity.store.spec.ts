@@ -3,9 +3,16 @@ import { ActivityDraft } from '../models/activity.model';
 import { ActivityStore } from './activity.store';
 
 const draft: ActivityDraft = {
-	name: 'Design Tool', amount: 600, category: '軟體', status: 'active',
-	startDate: '2026-07-01', nextBillingDate: '2026-08-01', billingCycle: { kind: 'monthly' }, reminderDays: 3,
-	website: '', notes: '',
+	name: 'Design Tool',
+	amount: 600,
+	category: '軟體',
+	status: 'active',
+	startDate: '2026-07-01',
+	nextBillingDate: '2026-08-01',
+	billingCycle: { kind: 'monthly' },
+	reminderDays: 3,
+	website: '',
+	notes: '',
 };
 
 describe('ActivityStore', () => {

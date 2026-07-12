@@ -15,6 +15,12 @@
 }
 
 @media (max-width: 599px) {
-	.form-content { width: auto; }
-	.reminder-row { align-items: flex-start; flex-direction: column; gap: 12px; }
+	.form-content {
+		width: auto;
+	}
+	.reminder-row {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 12px;
+	}
 }

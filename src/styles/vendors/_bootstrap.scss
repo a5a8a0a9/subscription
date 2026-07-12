@@ -3,7 +3,7 @@
 );
 
 // bootstrap-grid excludes spacing utilities; emit only the Bootstrap gap scale used by the app.
-@each $step, $size in (2: .5rem, 3: 1rem, 4: 1.5rem) {
+@each $step, $size in (2: 0.5rem, 3: 1rem, 4: 1.5rem) {
 	.gap-#{$step} {
 		gap: $size !important;
 	}

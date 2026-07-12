@@ -27,7 +27,11 @@ export function addDays(date: Date, days: number): Date {
 
 function addMonthsFromAnchor(anchor: Date, months: number): Date {
 	const target = new Date(anchor.getFullYear(), anchor.getMonth() + months, 1);
-	const lastDay = new Date(target.getFullYear(), target.getMonth() + 1, 0).getDate();
+	const lastDay = new Date(
+		target.getFullYear(),
+		target.getMonth() + 1,
+		0,
+	).getDate();
 	target.setDate(Math.min(anchor.getDate(), lastDay));
 	return target;
 }

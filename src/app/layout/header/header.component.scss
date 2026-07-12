@@ -4,7 +4,7 @@
 	z-index: 20;
 	height: 68px;
 	padding: 0 max(18px, calc((100vw - 1280px) / 2));
-	background: rgba(255, 255, 255, .92);
+	background: rgba(255, 255, 255, 0.92);
 	border-bottom: 1px solid #e5eaf1;
 	backdrop-filter: blur(14px);
 }
@@ -35,4 +35,3 @@
 		padding-inline: 14px;
 	}
 }
-

@@ -1,47 +1,90 @@
 <yo-page-container title="訂閱月曆">
 	<div page-actions class="month-nav">
-		<button mat-icon-button (click)="moveMonth(-1)" aria-label="上一個月"><mat-icon>chevron_left</mat-icon></button>
+		<button mat-icon-button (click)="moveMonth(-1)" aria-label="上一個月">
+			<mat-icon>chevron_left</mat-icon>
+		</button>
 		<button mat-button (click)="goToday()">今天</button>
-		<button mat-icon-button (click)="moveMonth(1)" aria-label="下一個月"><mat-icon>chevron_right</mat-icon></button>
+		<button mat-icon-button (click)="moveMonth(1)" aria-label="下一個月">
+			<mat-icon>chevron_right</mat-icon>
+		</button>
 	</div>
 
-<mat-card class="calendar-card">
-	<mat-card-header>
-		<mat-card-title>{{ visibleMonth() | date: 'yyyy 年 M 月' : '' : 'zh-TW' }}</mat-card-title>
-		<div class="month-total">本月預計 <strong>{{ monthTotal() | currency: 'TWD' : 'symbol-narrow' : '1.0-0' : 'zh-TW' }}</strong></div>
-	</mat-card-header>
-	<mat-card-content>
-		<div class="calendar-desktop">
-			<div class="weekday-grid">@for (day of weekdays; track day) { <div>{{ day }}</div> }</div>
-			<div class="calendar-grid">
-				@for (day of days(); track day.dateKey) {
-					<div class="calendar-day" [class.outside]="!day.inMonth" [class.today]="day.isToday">
-						<div class="day-number">{{ day.dayNumber }}</div>
-						<div class="event-list">
-							@for (event of day.events; track event.activityId + event.date) {
-								<button class="billing-event" (click)="openEvent(event.activityId)" [title]="event.activityName + ' NT$' + event.amount">
-									<span>{{ event.activityName }}</span><strong>{{ event.amount | number: '1.0-0' : 'zh-TW' }}</strong>
-								</button>
-							}
+	<mat-card class="calendar-card">
+		<mat-card-header>
+			<mat-card-title>{{
+				visibleMonth() | date: "yyyy 年 M 月" : "" : "zh-TW"
+			}}</mat-card-title>
+			<div class="month-total">
+				本月預計
+				<strong>{{
+					monthTotal() | currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
+				}}</strong>
+			</div>
+		</mat-card-header>
+		<mat-card-content>
+			<div class="calendar-desktop">
+				<div class="weekday-grid">
+					@for (day of weekdays; track day) {
+						<div>{{ day }}</div>
+					}
+				</div>
+				<div class="calendar-grid">
+					@for (day of days(); track day.dateKey) {
+						<div
+							class="calendar-day"
+							[class.outside]="!day.inMonth"
+							[class.today]="day.isToday"
+						>
+							<div class="day-number">{{ day.dayNumber }}</div>
+							<div class="event-list">
+								@for (
+									event of day.events;
+									track event.activityId + event.date
+								) {
+									<button
+										class="billing-event"
+										(click)="openEvent(event.activityId)"
+										[title]="event.activityName + ' NT$' + event.amount"
+									>
+										<span>{{ event.activityName }}</span
+										><strong>{{
+											event.amount | number: "1.0-0" : "zh-TW"
+										}}</strong>
+									</button>
+								}
+							</div>
 						</div>
+					}
+				</div>
+			</div>
+
+			<div class="calendar-list">
+				@if (monthEvents().length) {
+					@for (event of monthEvents(); track event.activityId + event.date) {
+						<button class="list-event" (click)="openEvent(event.activityId)">
+							<span class="list-date"
+								><strong>{{ event.date | date: "dd" : "" : "zh-TW" }}</strong
+								><small>{{
+									event.date | date: "EEE" : "" : "zh-TW"
+								}}</small></span
+							>
+							<span class="list-content"
+								><strong>{{ event.activityName }}</strong
+								><small>{{ event.category }}</small></span
+							>
+							<strong class="list-amount">{{
+								event.amount
+									| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
+							}}</strong>
+						</button>
+					}
+				} @else {
+					<div class="empty-state calendar-empty">
+						<mat-icon>event_available</mat-icon>
+						<p>本月沒有預計扣款</p>
 					</div>
 				}
 			</div>
-		</div>
-
-		<div class="calendar-list">
-			@if (monthEvents().length) {
-				@for (event of monthEvents(); track event.activityId + event.date) {
-					<button class="list-event" (click)="openEvent(event.activityId)">
-						<span class="list-date"><strong>{{ event.date | date: 'dd' : '' : 'zh-TW' }}</strong><small>{{ event.date | date: 'EEE' : '' : 'zh-TW' }}</small></span>
-						<span class="list-content"><strong>{{ event.activityName }}</strong><small>{{ event.category }}</small></span>
-						<strong class="list-amount">{{ event.amount | currency: 'TWD' : 'symbol-narrow' : '1.0-0' : 'zh-TW' }}</strong>
-					</button>
-				}
-			} @else {
-				<div class="empty-state calendar-empty"><mat-icon>event_available</mat-icon><p>本月沒有預計扣款</p></div>
-			}
-		</div>
-	</mat-card-content>
-</mat-card>
+		</mat-card-content>
+	</mat-card>
 </yo-page-container>
