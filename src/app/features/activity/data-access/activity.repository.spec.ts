@@ -11,15 +11,15 @@ describe('ActivityRepository', () => {
 
 	afterEach(() => localStorage.clear());
 
-	it('creates starter data when storage is empty', () => {
+	it('starts with an empty collection when storage is empty', () => {
 		const items = repository.load();
-		expect(items.length).toBeGreaterThan(0);
+		expect(items).toEqual([]);
 		expect(repository.load()).toEqual(items);
 	});
 
 	it('recovers safely from corrupt data', () => {
-		localStorage.setItem('activity-manager.activities.v2', '{not-json');
+		localStorage.setItem('sub-track.activities.v1', '{not-json');
 		expect(() => repository.load()).not.toThrow();
-		expect(repository.load().length).toBeGreaterThan(0);
+		expect(repository.load()).toEqual([]);
 	});
 });

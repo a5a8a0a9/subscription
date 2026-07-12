@@ -11,7 +11,7 @@ import {
 export class ReminderService {
 	private readonly store = inject(ActivityStore);
 	private readonly destroyRef = inject(DestroyRef);
-	private readonly sentKey = 'activity-manager.reminders.v1';
+	private readonly sentKey = 'sub-track.reminders.v1';
 	private initialized = false;
 
 	initialize(): void {

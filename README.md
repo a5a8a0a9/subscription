@@ -21,7 +21,7 @@ npm test -- --watch=false --browsers=ChromeHeadless
 npm run build
 ```
 
-Production build 會輸出至 `dist/activity-manager/browser/`。
+Production build 會輸出至 `dist/sub-track/browser/`。
 
 ## 功能
 
