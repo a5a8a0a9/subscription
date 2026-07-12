@@ -1,7 +1,7 @@
 <h2 mat-dialog-title>{{ data.item ? '編輯訂閱' : '新增訂閱' }}</h2>
 <form [formGroup]="form" (ngSubmit)="save()">
 	<mat-dialog-content class="form-content">
-		<div class="grid form-grid">
+		<div class="grid gap-3 form-grid">
 			<mat-form-field appearance="outline" class="g-col-12 g-col-md-7">
 				<mat-label>名稱</mat-label><input matInput formControlName="name" maxlength="80" />
 				@if (form.controls['name'].invalid) { <mat-error>請輸入名稱</mat-error> }

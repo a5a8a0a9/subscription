@@ -1,5 +1,5 @@
 <yo-page-container title="總覽">
-	<div page-actions class="heading-actions d-flex align-items-center">
+	<div page-actions class="d-flex align-items-center gap-2 flex-wrap">
 		<button mat-stroked-button (click)="enableNotifications()">
 			<mat-icon>notifications</mat-icon>{{ notificationLabel() }}
 		</button>
@@ -8,7 +8,7 @@
 		</a>
 	</div>
 
-<div class="grid summary-grid">
+<div class="grid gap-3 summary-grid">
 	@for (card of summaryCards(); track card.label) {
 		<div class="g-col-12 g-col-sm-6 g-col-xl-3">
 			<mat-card class="summary-card">
@@ -21,7 +21,7 @@
 	}
 </div>
 
-<div class="grid dashboard-body">
+<div class="grid gap-4 dashboard-body">
 	<div class="g-col-12 g-col-lg-8">
 		<mat-card class="panel-card">
 			<mat-card-header>

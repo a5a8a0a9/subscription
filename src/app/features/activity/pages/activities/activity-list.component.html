@@ -4,7 +4,8 @@
 	</div>
 
 <mat-card class="filter-card">
-	<mat-card-content class="grid filter-grid">
+	<mat-card-content>
+		<div class="grid gap-3 filter-grid">
 		<mat-form-field appearance="outline" subscriptSizing="dynamic" class="g-col-12 g-col-lg-6">
 			<mat-label>搜尋名稱或分類</mat-label><mat-icon matPrefix>search</mat-icon>
 			<input matInput [value]="search()" (input)="search.set($any($event.target).value)" />
@@ -30,12 +31,13 @@
 				<mat-option value="amountHigh">金額：高至低</mat-option><mat-option value="amountLow">金額：低至高</mat-option>
 			</mat-select>
 		</mat-form-field>
+		</div>
 	</mat-card-content>
 </mat-card>
 
 <div class="result-meta">共 {{ filteredItems().length }} 項結果</div>
 @if (filteredItems().length) {
-	<div class="grid activity-grid">
+	<div class="grid gap-3 activity-grid">
 		@for (item of filteredItems(); track item.id) {
 			<mat-card class="activity-card g-col-12 g-col-md-6 g-col-xl-4" (click)="openDetail(item)">
 				<mat-card-content>

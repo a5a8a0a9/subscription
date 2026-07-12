@@ -1,12 +1,4 @@
-.page-container,
-.page-body {
-	display: flex;
-	flex-direction: column;
-	gap: 24px;
-}
-
 .page-header {
-	gap: 16px;
 	min-height: 48px;
 }
 
@@ -17,7 +9,6 @@
 }
 
 .page-actions {
-	gap: 10px;
 	min-height: 48px;
 }
 
@@ -31,4 +22,3 @@
 		width: 100%;
 	}
 }
-
