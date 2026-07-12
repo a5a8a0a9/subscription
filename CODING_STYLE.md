@@ -24,16 +24,16 @@
 
 ## 3. 命名規則
 
-| 對象 | 規則 | 範例 |
-| --- | --- | --- |
-| 類別、介面、型別 | PascalCase | `ActivityStore`, `BillingCycle` |
-| 變數、函式、方法 | camelCase | `monthlySpend`, `eventsBetween()` |
-| 常數 | UPPER_SNAKE_CASE | `ACTIVITY_CATEGORIES` |
-| Component selector | `yo-` + kebab-case | `yo-activity-list` |
-| Component 檔案 | kebab-case + 類型後綴 | `activity-list.component.ts` |
-| Service/Repository/Store | kebab-case + 責任後綴 | `reminder.service.ts`, `activity.repository.ts` |
-| 測試檔 | 與來源同名 + `.spec.ts` | `activity.store.spec.ts` |
-| SCSS partial | `_` + kebab-case | `_material-overrides.scss` |
+| 對象                     | 規則                    | 範例                                            |
+| ------------------------ | ----------------------- | ----------------------------------------------- |
+| 類別、介面、型別         | PascalCase              | `ActivityStore`, `BillingCycle`                 |
+| 變數、函式、方法         | camelCase               | `monthlySpend`, `eventsBetween()`               |
+| 常數                     | UPPER_SNAKE_CASE        | `ACTIVITY_CATEGORIES`                           |
+| Component selector       | `yo-` + kebab-case      | `yo-activity-list`                              |
+| Component 檔案           | kebab-case + 類型後綴   | `activity-list.component.ts`                    |
+| Service/Repository/Store | kebab-case + 責任後綴   | `reminder.service.ts`, `activity.repository.ts` |
+| 測試檔                   | 與來源同名 + `.spec.ts` | `activity.store.spec.ts`                        |
+| SCSS partial             | `_` + kebab-case        | `_material-overrides.scss`                      |
 
 - 名稱應表達領域意義，避免 `data`、`item2`、`handleThing` 等模糊命名。
 - Boolean 使用可判斷真假的語意，例如 `isLoading`、`hasPermission`、`reminderEnabled`。

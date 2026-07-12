@@ -83,52 +83,52 @@
 				<mat-card appearance="outlined">
 					<mat-card-content>
 						<div class="activity-card-content d-flex flex-column gap-2">
-						<div class="card-top">
-							<div class="service-icon">
-								{{ item.name.charAt(0).toUpperCase() }}
+							<div class="card-top">
+								<div class="service-icon">
+									{{ item.name.charAt(0).toUpperCase() }}
+								</div>
+								<span [class]="'status-pill ' + item.status">{{
+									statusLabels[item.status]
+								}}</span>
 							</div>
-							<span [class]="'status-pill ' + item.status">{{
-								statusLabels[item.status]
-							}}</span>
-						</div>
-						<h2>{{ item.name }}</h2>
-						<span class="category">{{ item.category }}</span>
-						<div class="amount">
-							{{
-								item.amount
-									| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
-							}}
-							<small>/ {{ cycleLabel(item.billingCycle) }}</small>
-						</div>
-						<div class="billing-date">
-							<mat-icon>event</mat-icon
-							><span>下次扣款 {{ item.nextBillingDate }}</span>
-						</div>
-						<div class="card-actions">
-							<button
-								mat-button
-								(click)="openForm(item); $event.stopPropagation()"
-							>
-								<mat-icon>edit</mat-icon>編輯
-							</button>
-							<button
-								mat-icon-button
-								aria-label="刪除"
-								(click)="confirmDelete(item); $event.stopPropagation()"
-							>
-								<mat-icon>delete_outline</mat-icon>
-							</button>
-						</div>
+							<h2>{{ item.name }}</h2>
+							<span class="category">{{ item.category }}</span>
+							<div class="amount">
+								{{
+									item.amount
+										| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
+								}}
+								<small>/ {{ cycleLabel(item.billingCycle) }}</small>
+							</div>
+							<div class="billing-date">
+								<mat-icon>event</mat-icon
+								><span>下次扣款 {{ item.nextBillingDate }}</span>
+							</div>
+							<div class="card-actions">
+								<button
+									mat-button
+									(click)="openForm(item); $event.stopPropagation()"
+								>
+									<mat-icon>edit</mat-icon>編輯
+								</button>
+								<button
+									mat-icon-button
+									aria-label="刪除"
+									(click)="confirmDelete(item); $event.stopPropagation()"
+								>
+									<mat-icon>delete_outline</mat-icon>
+								</button>
+							</div>
 						</div>
 					</mat-card-content>
 				</mat-card>
 			</div>
 		} @empty {
-		<div class="empty-state g-col-12">
-			<mat-icon>search_off</mat-icon>
-			<h2>找不到符合的訂閱</h2>
-			<p>請調整搜尋或篩選條件。</p>
-		</div>
+			<div class="empty-state g-col-12">
+				<mat-icon>search_off</mat-icon>
+				<h2>找不到符合的訂閱</h2>
+				<p>請調整搜尋或篩選條件。</p>
+			</div>
 		}
 	</div>
 </yo-page-container>

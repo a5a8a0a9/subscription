@@ -33,7 +33,9 @@
 		<div class="g-col-12 g-col-lg-8">
 			<mat-card appearance="outlined">
 				<mat-card-header>
-					<div class="panel-heading d-flex align-items-start justify-content-between gap-3">
+					<div
+						class="panel-heading d-flex align-items-start justify-content-between gap-3"
+					>
 						<div>
 							<mat-card-title>即將扣款</mat-card-title>
 							<mat-card-subtitle>未來 30 天的支出行程</mat-card-subtitle>
@@ -44,23 +46,23 @@
 				<mat-card-content>
 					<div class="panel-content charge-list">
 						@for (
-								event of store.upcomingCharges().slice(0, 6);
-								track event.activityId + event.date
-							) {
-								<div class="charge-row">
-									<div class="date-chip">
-										<strong>{{ event.date | date: "dd" : "" : "zh-TW" }}</strong
-										><span>{{ event.date | date: "MMM" : "" : "zh-TW" }}</span>
-									</div>
-									<div class="charge-name">
-										<strong>{{ event.activityName }}</strong
-										><span>{{ event.category }}</span>
-									</div>
-									<strong>{{
-										event.amount
-											| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
-									}}</strong>
+							event of store.upcomingCharges().slice(0, 6);
+							track event.activityId + event.date
+						) {
+							<div class="charge-row">
+								<div class="date-chip">
+									<strong>{{ event.date | date: "dd" : "" : "zh-TW" }}</strong
+									><span>{{ event.date | date: "MMM" : "" : "zh-TW" }}</span>
 								</div>
+								<div class="charge-name">
+									<strong>{{ event.activityName }}</strong
+									><span>{{ event.category }}</span>
+								</div>
+								<strong>{{
+									event.amount
+										| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
+								}}</strong>
+							</div>
 						} @empty {
 							<div class="empty-state">
 								<mat-icon>event_available</mat-icon>
@@ -81,7 +83,7 @@
 				>
 				<mat-card-content>
 					<div class="panel-content">
-					@for (event of dueSoon(); track event.activityId + event.date) {
+						@for (event of dueSoon(); track event.activityId + event.date) {
 							<div class="reminder-item">
 								<mat-icon>schedule</mat-icon>
 								<div>
@@ -89,12 +91,12 @@
 									><span>{{ event.date }} 扣款</span>
 								</div>
 							</div>
-					} @empty {
-						<div class="empty-state compact">
-							<mat-icon>notifications_none</mat-icon>
-							<p>目前沒有近期提醒</p>
-						</div>
-					}
+						} @empty {
+							<div class="empty-state compact">
+								<mat-icon>notifications_none</mat-icon>
+								<p>目前沒有近期提醒</p>
+							</div>
+						}
 					</div>
 				</mat-card-content>
 			</mat-card>

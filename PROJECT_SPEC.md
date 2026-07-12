@@ -24,20 +24,20 @@ SubTrack 是供個人使用的繁體中文訂閱管理 PWA。使用者可在不�
 
 ## 2. 技術基線
 
-| 項目 | 規格 |
-| --- | --- |
-| Framework | Angular 22，standalone components |
-| 語言 | TypeScript 6，strict mode |
-| UI | Angular Material 22、Bootstrap 5.3、SCSS |
-| 狀態管理 | Angular Signals (`signal`、`computed`) |
-| 表單 | Angular Reactive Forms |
-| 路由 | Angular Router，頁面元件 lazy loading |
-| 資料儲存 | Browser `localStorage`，具版本化 payload |
-| 離線能力 | Angular Service Worker、Web App Manifest |
-| 測試 | Jasmine、Karma、ChromeHeadless |
-| 套件管理 | npm，必須提交 `package-lock.json` |
-| 語系 | `zh-TW` |
-| 支援環境 | 具現代 Web API、`localStorage` 與 ES2022 支援的瀏覽器 |
+| 項目      | 規格                                                  |
+| --------- | ----------------------------------------------------- |
+| Framework | Angular 22，standalone components                     |
+| 語言      | TypeScript 6，strict mode                             |
+| UI        | Angular Material 22、Bootstrap 5.3、SCSS              |
+| 狀態管理  | Angular Signals (`signal`、`computed`)                |
+| 表單      | Angular Reactive Forms                                |
+| 路由      | Angular Router，頁面元件 lazy loading                 |
+| 資料儲存  | Browser `localStorage`，具版本化 payload              |
+| 離線能力  | Angular Service Worker、Web App Manifest              |
+| 測試      | Jasmine、Karma、ChromeHeadless                        |
+| 套件管理  | npm，必須提交 `package-lock.json`                     |
+| 語系      | `zh-TW`                                               |
+| 支援環境  | 具現代 Web API、`localStorage` 與 ES2022 支援的瀏覽器 |
 
 建議開發環境為 Node.js 22.22.3 與 npm。Production build 輸出至 `dist/sub-track/browser/`。
 
@@ -45,12 +45,12 @@ SubTrack 是供個人使用的繁體中文訂閱管理 PWA。使用者可在不�
 
 應用程式使用共用 Header、主要內容區及 Footer。未知路由一律導回儀表板。
 
-| 路由 | 頁面 | 用途 |
-| --- | --- | --- |
-| `/dashboard` | 儀表板 | 顯示摘要、近期扣款及通知狀態 |
+| 路由          | 頁面     | 用途                             |
+| ------------- | -------- | -------------------------------- |
+| `/dashboard`  | 儀表板   | 顯示摘要、近期扣款及通知狀態     |
 | `/activities` | 訂閱清單 | 瀏覽、搜尋、篩選、排序及維護訂閱 |
-| `/calendar` | 扣款月曆 | 依月份查看預計扣款事件 |
-| `/` | 重新導向 | 導向 `/dashboard` |
+| `/calendar`   | 扣款月曆 | 依月份查看預計扣款事件           |
+| `/`           | 重新導向 | 導向 `/dashboard`                |
 
 ## 4. 功能需求
 
@@ -74,20 +74,20 @@ SubTrack 是供個人使用的繁體中文訂閱管理 PWA。使用者可在不�
 
 每筆訂閱包含以下欄位：
 
-| 欄位 | 規則 |
-| --- | --- |
-| ID | 建立時產生 UUID；不支援時以時間戳替代 |
-| 名稱 | 必填，去除首尾空白，最多 80 字元 |
-| 金額 | 必填，最小 1，儲存為四捨五入後整數 |
-| 分類 | 必填，可使用影音、音樂、軟體、雲端、學習、健康、其他 |
-| 狀態 | `active`、`paused` 或 `cancelled` |
-| 開始日期 | 必填，`YYYY-MM-DD` |
-| 下次扣款日 | 必填，`YYYY-MM-DD`，不得早於開始日期 |
-| 計費週期 | 每月、每季、每年，或每 N 天／月／年 |
-| 提醒 | 可關閉，或設定扣款前 1、3、7、14、30 天 |
-| 網站 | 選填，儲存前去除首尾空白 |
-| 備註 | 選填，最多 500 字元，儲存前去除首尾空白 |
-| 建立／更新時間 | ISO 8601 timestamp |
+| 欄位           | 規則                                                 |
+| -------------- | ---------------------------------------------------- |
+| ID             | 建立時產生 UUID；不支援時以時間戳替代                |
+| 名稱           | 必填，去除首尾空白，最多 80 字元                     |
+| 金額           | 必填，最小 1，儲存為四捨五入後整數                   |
+| 分類           | 必填，可使用影音、音樂、軟體、雲端、學習、健康、其他 |
+| 狀態           | `active`、`paused` 或 `cancelled`                    |
+| 開始日期       | 必填，`YYYY-MM-DD`                                   |
+| 下次扣款日     | 必填，`YYYY-MM-DD`，不得早於開始日期                 |
+| 計費週期       | 每月、每季、每年，或每 N 天／月／年                  |
+| 提醒           | 可關閉，或設定扣款前 1、3、7、14、30 天              |
+| 網站           | 選填，儲存前去除首尾空白                             |
+| 備註           | 選填，最多 500 字元，儲存前去除首尾空白              |
+| 建立／更新時間 | ISO 8601 timestamp                                   |
 
 ### 4.4 扣款日期計算
 

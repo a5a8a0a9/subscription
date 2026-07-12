@@ -11,7 +11,9 @@
 
 	<mat-card appearance="outlined">
 		<mat-card-header>
-			<div class="calendar-heading d-flex align-items-center justify-content-between gap-3">
+			<div
+				class="calendar-heading d-flex align-items-center justify-content-between gap-3"
+			>
 				<mat-card-title>{{
 					visibleMonth() | date: "yyyy 年 M 月" : "" : "zh-TW"
 				}}</mat-card-title>
@@ -25,44 +27,44 @@
 		</mat-card-header>
 		<mat-card-content>
 			<div class="calendar-content">
-			<div class="calendar-desktop">
-				<div class="weekday-grid">
-					@for (day of weekdays; track day) {
-						<div>{{ day }}</div>
-					}
-				</div>
-				<div class="calendar-grid">
-					@for (day of days(); track day.dateKey) {
-						<div
-							class="calendar-day"
-							[class.outside]="!day.inMonth"
-							[class.today]="day.isToday"
-						>
-							<div class="day-number">{{ day.dayNumber }}</div>
-							<div class="event-list">
-								@for (
-									event of day.events;
-									track event.activityId + event.date
-								) {
-									<button
-										class="billing-event"
-										(click)="openEvent(event.activityId)"
-										[title]="event.activityName + ' NT$' + event.amount"
-									>
-										<span>{{ event.activityName }}</span
-										><strong>{{
-											event.amount | number: "1.0-0" : "zh-TW"
-										}}</strong>
-									</button>
-								}
+				<div class="calendar-desktop">
+					<div class="weekday-grid">
+						@for (day of weekdays; track day) {
+							<div>{{ day }}</div>
+						}
+					</div>
+					<div class="calendar-grid">
+						@for (day of days(); track day.dateKey) {
+							<div
+								class="calendar-day"
+								[class.outside]="!day.inMonth"
+								[class.today]="day.isToday"
+							>
+								<div class="day-number">{{ day.dayNumber }}</div>
+								<div class="event-list">
+									@for (
+										event of day.events;
+										track event.activityId + event.date
+									) {
+										<button
+											class="billing-event"
+											(click)="openEvent(event.activityId)"
+											[title]="event.activityName + ' NT$' + event.amount"
+										>
+											<span>{{ event.activityName }}</span
+											><strong>{{
+												event.amount | number: "1.0-0" : "zh-TW"
+											}}</strong>
+										</button>
+									}
+								</div>
 							</div>
-						</div>
-					}
+						}
+					</div>
 				</div>
-			</div>
 
-			<div class="calendar-list">
-				@for (event of monthEvents(); track event.activityId + event.date) {
+				<div class="calendar-list">
+					@for (event of monthEvents(); track event.activityId + event.date) {
 						<button class="list-event" (click)="openEvent(event.activityId)">
 							<span class="list-date"
 								><strong>{{ event.date | date: "dd" : "" : "zh-TW" }}</strong
@@ -79,13 +81,13 @@
 									| currency: "TWD" : "symbol-narrow" : "1.0-0" : "zh-TW"
 							}}</strong>
 						</button>
-				} @empty {
-					<div class="empty-state calendar-empty">
-						<mat-icon>event_available</mat-icon>
-						<p>本月沒有預計扣款</p>
-					</div>
-				}
-			</div>
+					} @empty {
+						<div class="empty-state calendar-empty">
+							<mat-icon>event_available</mat-icon>
+							<p>本月沒有預計扣款</p>
+						</div>
+					}
+				</div>
 			</div>
 		</mat-card-content>
 	</mat-card>
