@@ -10,4 +10,3 @@ import { Component, input } from '@angular/core';
 export class PageContainerComponent {
 	readonly title = input.required<string>();
 }
-

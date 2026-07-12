@@ -4,11 +4,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivityDetailDialogComponent, ActivityFormDialogComponent } from '../activities/activity-dialogs';
+import { PageContainerComponent } from '@layout/page-container/page-container.component';
 import { ActivityStore } from '../../data-access/activity.store';
 import { Activity } from '../../models/activity.model';
 import { formatLocalDate } from '../../utils/billing-date.utils';
-import { PageContainerComponent } from '../../../../layout/page-container/page-container.component';
+import {
+	ActivityDetailDialogComponent,
+	ActivityFormDialogComponent,
+} from '../activities/activity-dialogs';
 
 interface CalendarDay {
 	date: Date;
@@ -23,7 +26,13 @@ interface CalendarDay {
 	selector: 'yo-calendar',
 	standalone: true,
 	host: { class: 'd-block' },
-	imports: [CommonModule, MatButtonModule, MatCardModule, MatIconModule, PageContainerComponent],
+	imports: [
+		CommonModule,
+		MatButtonModule,
+		MatCardModule,
+		MatIconModule,
+		PageContainerComponent,
+	],
 	templateUrl: './calendar.component.html',
 	styleUrl: './calendar.component.scss',
 })
@@ -37,7 +46,9 @@ export class CalendarComponent {
 		const end = new Date(start.getFullYear(), start.getMonth() + 1, 0);
 		return this.store.eventsBetween(start, end);
 	});
-	readonly monthTotal = computed(() => this.monthEvents().reduce((total, event) => total + event.amount, 0));
+	readonly monthTotal = computed(() =>
+		this.monthEvents().reduce((total, event) => total + event.amount, 0),
+	);
 	readonly days = computed<CalendarDay[]>(() => {
 		const month = this.visibleMonth();
 		const gridStart = new Date(month);
@@ -60,7 +71,9 @@ export class CalendarComponent {
 
 	moveMonth(offset: number): void {
 		const current = this.visibleMonth();
-		this.visibleMonth.set(new Date(current.getFullYear(), current.getMonth() + offset, 1));
+		this.visibleMonth.set(
+			new Date(current.getFullYear(), current.getMonth() + offset, 1),
+		);
 	}
 
 	goToday(): void {
@@ -70,15 +83,21 @@ export class CalendarComponent {
 	openEvent(id: string): void {
 		const item = this.store.getById(id);
 		if (!item) return;
-		this.dialog.open(ActivityDetailDialogComponent, { data: item, maxWidth: '92vw' }).afterClosed().subscribe((action) => {
-			if (action === 'edit') this.openForm(item);
-		});
+		this.dialog
+			.open(ActivityDetailDialogComponent, { data: item, maxWidth: '92vw' })
+			.afterClosed()
+			.subscribe((action) => {
+				if (action === 'edit') this.openForm(item);
+			});
 	}
 
 	private openForm(item: Activity): void {
-		this.dialog.open(ActivityFormDialogComponent, { data: { item }, maxWidth: '95vw' }).afterClosed().subscribe((draft) => {
-			if (draft) this.store.update(item.id, draft);
-		});
+		this.dialog
+			.open(ActivityFormDialogComponent, { data: { item }, maxWidth: '95vw' })
+			.afterClosed()
+			.subscribe((draft) => {
+				if (draft) this.store.update(item.id, draft);
+			});
 	}
 }
 
