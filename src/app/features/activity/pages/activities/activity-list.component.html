@@ -7,7 +7,7 @@
 
 	<mat-card appearance="outlined">
 		<mat-card-content>
-			<div class="grid gap-3 filter-grid">
+			<div class="grid gap-3">
 				<mat-form-field
 					appearance="outline"
 					subscriptSizing="dynamic"
@@ -74,7 +74,7 @@
 	</mat-card>
 
 	<div class="result-meta">共 {{ filteredItems().length }} 項結果</div>
-	<div class="grid gap-3 activity-grid">
+	<div class="grid gap-3">
 		@for (item of filteredItems(); track item.id) {
 			<div
 				class="activity-card-shell g-col-12 g-col-md-6 g-col-xl-4"

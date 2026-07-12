@@ -8,12 +8,12 @@
 		</a>
 	</div>
 
-	<div class="grid gap-3 summary-grid">
+	<div class="grid gap-3">
 		@for (card of summaryCards(); track card.label) {
 			<div class="g-col-12 g-col-sm-6 g-col-xl-3">
 				<mat-card appearance="outlined">
 					<mat-card-content>
-						<div class="summary-content d-flex align-items-center gap-3">
+						<div class="d-flex align-items-center gap-3">
 							<div [class]="'summary-icon ' + card.tone">
 								<mat-icon>{{ card.icon }}</mat-icon>
 							</div>
@@ -29,7 +29,7 @@
 		}
 	</div>
 
-	<div class="grid gap-4 dashboard-body">
+	<div class="grid gap-4">
 		<div class="g-col-12 g-col-lg-8">
 			<mat-card appearance="outlined">
 				<mat-card-header>
@@ -44,7 +44,7 @@
 					</div>
 				</mat-card-header>
 				<mat-card-content>
-					<div class="panel-content charge-list">
+					<div class="panel-content">
 						@for (
 							event of store.upcomingCharges().slice(0, 6);
 							track event.activityId + event.date
